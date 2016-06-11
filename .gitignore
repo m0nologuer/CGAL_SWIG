@@ -1,0 +1,10 @@
+build-java/
+build-python/
+lib/
+
+CMakeFiles/
+cmake/
+CMakeCache.txt
+CMakeLists.txt
+CTestTestfile.cmake
+cmake_install.cmake
