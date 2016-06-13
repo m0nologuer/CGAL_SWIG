@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -122,22 +122,11 @@ install/fast: preinstall/fast
 	/usr/local/Cellar/cmake/3.5.2/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -205,19 +194,6 @@ CGAL_Kernel_cpp/fast:
 .PHONY : CGAL_Kernel_cpp/fast
 
 #=============================================================================
-# Target rules for targets named CGAL_Java
-
-# Build rule for target.
-CGAL_Java: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 CGAL_Java
-.PHONY : CGAL_Java
-
-# fast build rule for target.
-CGAL_Java/fast:
-	$(MAKE) -f SWIG_CGAL/Java/CMakeFiles/CGAL_Java.dir/build.make SWIG_CGAL/Java/CMakeFiles/CGAL_Java.dir/build
-.PHONY : CGAL_Java/fast
-
-#=============================================================================
 # Target rules for targets named CGAL_Java_cpp
 
 # Build rule for target.
@@ -229,6 +205,19 @@ CGAL_Java_cpp: cmake_check_build_system
 CGAL_Java_cpp/fast:
 	$(MAKE) -f SWIG_CGAL/Java/CMakeFiles/CGAL_Java_cpp.dir/build.make SWIG_CGAL/Java/CMakeFiles/CGAL_Java_cpp.dir/build
 .PHONY : CGAL_Java_cpp/fast
+
+#=============================================================================
+# Target rules for targets named CGAL_Java
+
+# Build rule for target.
+CGAL_Java: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 CGAL_Java
+.PHONY : CGAL_Java
+
+# fast build rule for target.
+CGAL_Java/fast:
+	$(MAKE) -f SWIG_CGAL/Java/CMakeFiles/CGAL_Java.dir/build.make SWIG_CGAL/Java/CMakeFiles/CGAL_Java.dir/build
+.PHONY : CGAL_Java/fast
 
 #=============================================================================
 # Target rules for targets named _CGAL_Triangulation_3
@@ -439,19 +428,6 @@ CGAL_AABB_tree_cpp/fast:
 .PHONY : CGAL_AABB_tree_cpp/fast
 
 #=============================================================================
-# Target rules for targets named CGAL_Surface_mesher
-
-# Build rule for target.
-CGAL_Surface_mesher: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 CGAL_Surface_mesher
-.PHONY : CGAL_Surface_mesher
-
-# fast build rule for target.
-CGAL_Surface_mesher/fast:
-	$(MAKE) -f SWIG_CGAL/Surface_mesher/CMakeFiles/CGAL_Surface_mesher.dir/build.make SWIG_CGAL/Surface_mesher/CMakeFiles/CGAL_Surface_mesher.dir/build
-.PHONY : CGAL_Surface_mesher/fast
-
-#=============================================================================
 # Target rules for targets named _CGAL_Surface_mesher
 
 # Build rule for target.
@@ -463,6 +439,19 @@ _CGAL_Surface_mesher: cmake_check_build_system
 _CGAL_Surface_mesher/fast:
 	$(MAKE) -f SWIG_CGAL/Surface_mesher/CMakeFiles/_CGAL_Surface_mesher.dir/build.make SWIG_CGAL/Surface_mesher/CMakeFiles/_CGAL_Surface_mesher.dir/build
 .PHONY : _CGAL_Surface_mesher/fast
+
+#=============================================================================
+# Target rules for targets named CGAL_Surface_mesher
+
+# Build rule for target.
+CGAL_Surface_mesher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 CGAL_Surface_mesher
+.PHONY : CGAL_Surface_mesher
+
+# fast build rule for target.
+CGAL_Surface_mesher/fast:
+	$(MAKE) -f SWIG_CGAL/Surface_mesher/CMakeFiles/CGAL_Surface_mesher.dir/build.make SWIG_CGAL/Surface_mesher/CMakeFiles/CGAL_Surface_mesher.dir/build
+.PHONY : CGAL_Surface_mesher/fast
 
 #=============================================================================
 # Target rules for targets named CGAL_Surface_mesher_cpp
@@ -569,19 +558,6 @@ CGAL_Interpolation/fast:
 .PHONY : CGAL_Interpolation/fast
 
 #=============================================================================
-# Target rules for targets named _CGAL_Convex_hull_2
-
-# Build rule for target.
-_CGAL_Convex_hull_2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _CGAL_Convex_hull_2
-.PHONY : _CGAL_Convex_hull_2
-
-# fast build rule for target.
-_CGAL_Convex_hull_2/fast:
-	$(MAKE) -f SWIG_CGAL/Convex_hull_2/CMakeFiles/_CGAL_Convex_hull_2.dir/build.make SWIG_CGAL/Convex_hull_2/CMakeFiles/_CGAL_Convex_hull_2.dir/build
-.PHONY : _CGAL_Convex_hull_2/fast
-
-#=============================================================================
 # Target rules for targets named CGAL_Convex_hull_2
 
 # Build rule for target.
@@ -595,17 +571,17 @@ CGAL_Convex_hull_2/fast:
 .PHONY : CGAL_Convex_hull_2/fast
 
 #=============================================================================
-# Target rules for targets named _CGAL_Voronoi_diagram_2
+# Target rules for targets named _CGAL_Convex_hull_2
 
 # Build rule for target.
-_CGAL_Voronoi_diagram_2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _CGAL_Voronoi_diagram_2
-.PHONY : _CGAL_Voronoi_diagram_2
+_CGAL_Convex_hull_2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _CGAL_Convex_hull_2
+.PHONY : _CGAL_Convex_hull_2
 
 # fast build rule for target.
-_CGAL_Voronoi_diagram_2/fast:
-	$(MAKE) -f SWIG_CGAL/Voronoi_diagram_2/CMakeFiles/_CGAL_Voronoi_diagram_2.dir/build.make SWIG_CGAL/Voronoi_diagram_2/CMakeFiles/_CGAL_Voronoi_diagram_2.dir/build
-.PHONY : _CGAL_Voronoi_diagram_2/fast
+_CGAL_Convex_hull_2/fast:
+	$(MAKE) -f SWIG_CGAL/Convex_hull_2/CMakeFiles/_CGAL_Convex_hull_2.dir/build.make SWIG_CGAL/Convex_hull_2/CMakeFiles/_CGAL_Convex_hull_2.dir/build
+.PHONY : _CGAL_Convex_hull_2/fast
 
 #=============================================================================
 # Target rules for targets named CGAL_Voronoi_diagram_2
@@ -619,6 +595,19 @@ CGAL_Voronoi_diagram_2: cmake_check_build_system
 CGAL_Voronoi_diagram_2/fast:
 	$(MAKE) -f SWIG_CGAL/Voronoi_diagram_2/CMakeFiles/CGAL_Voronoi_diagram_2.dir/build.make SWIG_CGAL/Voronoi_diagram_2/CMakeFiles/CGAL_Voronoi_diagram_2.dir/build
 .PHONY : CGAL_Voronoi_diagram_2/fast
+
+#=============================================================================
+# Target rules for targets named _CGAL_Voronoi_diagram_2
+
+# Build rule for target.
+_CGAL_Voronoi_diagram_2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _CGAL_Voronoi_diagram_2
+.PHONY : _CGAL_Voronoi_diagram_2
+
+# fast build rule for target.
+_CGAL_Voronoi_diagram_2/fast:
+	$(MAKE) -f SWIG_CGAL/Voronoi_diagram_2/CMakeFiles/_CGAL_Voronoi_diagram_2.dir/build.make SWIG_CGAL/Voronoi_diagram_2/CMakeFiles/_CGAL_Voronoi_diagram_2.dir/build
+.PHONY : _CGAL_Voronoi_diagram_2/fast
 
 #=============================================================================
 # Target rules for targets named _CGAL_HalfedgeDS
@@ -736,12 +725,11 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... install/strip"
 	@echo "... _CGAL_Kernel"
 	@echo "... CGAL_Kernel"
 	@echo "... CGAL_Kernel_cpp"
-	@echo "... CGAL_Java"
 	@echo "... CGAL_Java_cpp"
+	@echo "... CGAL_Java"
 	@echo "... _CGAL_Triangulation_3"
 	@echo "... CGAL_Triangulation_3"
 	@echo "... CGAL_Triangulation_3_cpp"
@@ -758,8 +746,8 @@ help:
 	@echo "... _CGAL_AABB_tree"
 	@echo "... CGAL_AABB_tree"
 	@echo "... CGAL_AABB_tree_cpp"
-	@echo "... CGAL_Surface_mesher"
 	@echo "... _CGAL_Surface_mesher"
+	@echo "... CGAL_Surface_mesher"
 	@echo "... CGAL_Surface_mesher_cpp"
 	@echo "... _CGAL_Mesh_3"
 	@echo "... CGAL_Mesh_3"
@@ -768,10 +756,10 @@ help:
 	@echo "... CGAL_Mesh_2"
 	@echo "... _CGAL_Interpolation"
 	@echo "... CGAL_Interpolation"
-	@echo "... _CGAL_Convex_hull_2"
 	@echo "... CGAL_Convex_hull_2"
-	@echo "... _CGAL_Voronoi_diagram_2"
+	@echo "... _CGAL_Convex_hull_2"
 	@echo "... CGAL_Voronoi_diagram_2"
+	@echo "... _CGAL_Voronoi_diagram_2"
 	@echo "... _CGAL_HalfedgeDS"
 	@echo "... CGAL_HalfedgeDS"
 	@echo "... _CGAL_Point_set_processing_3"

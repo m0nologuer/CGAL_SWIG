@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -66,17 +66,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -100,17 +89,6 @@ install/fast: preinstall/fast
 	/usr/local/Cellar/cmake/3.5.2/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -133,16 +111,27 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/Cellar/cmake/3.5.2/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/SWIG_CGAL/Polyhedron_3/CMakeFiles/progress.marks
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/SWIG_CGAL/Polyhedron_3/CMakeFiles/progress.marks
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/clean
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/rule
 .PHONY : SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/rule
 
 # Convenience name for target.
@@ -177,12 +166,12 @@ _CGAL_Polyhedron_3: SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/rul
 
 # fast build rule for target.
 _CGAL_Polyhedron_3/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build
 .PHONY : _CGAL_Polyhedron_3/fast
 
 # Convenience name for target.
 SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/rule
 .PHONY : SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/rule
 
 # Convenience name for target.
@@ -192,7 +181,7 @@ CGAL_Polyhedron_3: SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/rule
 
 # fast build rule for target.
 CGAL_Polyhedron_3/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build
 .PHONY : CGAL_Polyhedron_3/fast
 
 __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.o: __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.o
@@ -201,7 +190,7 @@ __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.o: __/__/build-jav
 
 # target to build an object file
 __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/__/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/__/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.o
 .PHONY : __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.o
 
 __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.i: __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.i
@@ -210,7 +199,7 @@ __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.i: __/__/build-jav
 
 # target to preprocess a source file
 __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/__/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/__/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.i
 .PHONY : __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.i
 
 __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.s: __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.s
@@ -219,7 +208,7 @@ __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.s: __/__/build-jav
 
 # target to generate assembly for a file
 __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/__/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/CGAL_Polyhedron_3.dir/__/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.s
 .PHONY : __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.cxx.s
 
 __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.o: __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.o
@@ -228,7 +217,7 @@ __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.o: __/__/build-python/CGAL/
 
 # target to build an object file
 __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/__/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/__/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.o
 .PHONY : __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.o
 
 __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.i: __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.i
@@ -237,7 +226,7 @@ __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.i: __/__/build-python/CGAL/
 
 # target to preprocess a source file
 __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/__/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/__/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.i
 .PHONY : __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.i
 
 __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.s: __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.s
@@ -246,7 +235,7 @@ __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.s: __/__/build-python/CGAL/
 
 # target to generate assembly for a file
 __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/__/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/build.make SWIG_CGAL/Polyhedron_3/CMakeFiles/_CGAL_Polyhedron_3.dir/__/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.s
 .PHONY : __/__/build-python/CGAL/CGAL_Polyhedron_3PYTHON_wrap.cxx.s
 
 # Help Target
@@ -256,13 +245,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... install/strip"
 	@echo "... test"
 	@echo "... install/local"
 	@echo "... _CGAL_Polyhedron_3"
+	@echo "... rebuild_cache"
 	@echo "... CGAL_Polyhedron_3"
 	@echo "... __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.o"
 	@echo "... __/__/build-java/CGAL/Polyhedron_3/CGAL_Polyhedron_3JAVA_wrap.i"
@@ -281,6 +269,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

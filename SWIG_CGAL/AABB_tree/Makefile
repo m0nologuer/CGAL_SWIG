@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -89,27 +89,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -133,16 +112,26 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/SWIG_CGAL/AABB_tree/CMakeFiles/progress.marks
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/SWIG_CGAL/AABB_tree/CMakeFiles/progress.marks
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/clean
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/rule
 .PHONY : SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/rule
 
 # Convenience name for target.
@@ -177,12 +166,12 @@ _CGAL_AABB_tree: SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/rule
 
 # fast build rule for target.
 _CGAL_AABB_tree/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build
 .PHONY : _CGAL_AABB_tree/fast
 
 # Convenience name for target.
 SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/rule
 .PHONY : SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/rule
 
 # Convenience name for target.
@@ -192,12 +181,12 @@ CGAL_AABB_tree: SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/rule
 
 # fast build rule for target.
 CGAL_AABB_tree/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build
 .PHONY : CGAL_AABB_tree/fast
 
 # Convenience name for target.
 SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/rule
 .PHONY : SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/rule
 
 # Convenience name for target.
@@ -207,7 +196,7 @@ CGAL_AABB_tree_cpp: SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/rule
 
 # fast build rule for target.
 CGAL_AABB_tree_cpp/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build
 .PHONY : CGAL_AABB_tree_cpp/fast
 
 Object.o: Object.cpp.o
@@ -216,7 +205,7 @@ Object.o: Object.cpp.o
 
 # target to build an object file
 Object.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/Object.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/Object.cpp.o
 .PHONY : Object.cpp.o
 
 Object.i: Object.cpp.i
@@ -225,7 +214,7 @@ Object.i: Object.cpp.i
 
 # target to preprocess a source file
 Object.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/Object.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/Object.cpp.i
 .PHONY : Object.cpp.i
 
 Object.s: Object.cpp.s
@@ -234,7 +223,7 @@ Object.s: Object.cpp.s
 
 # target to generate assembly for a file
 Object.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/Object.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree_cpp.dir/Object.cpp.s
 .PHONY : Object.cpp.s
 
 __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.o: __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.o
@@ -243,7 +232,7 @@ __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.o: __/__/build-java/CGAL
 
 # target to build an object file
 __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/__/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/__/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.o
 .PHONY : __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.o
 
 __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.i: __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.i
@@ -252,7 +241,7 @@ __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.i: __/__/build-java/CGAL
 
 # target to preprocess a source file
 __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/__/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/__/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.i
 .PHONY : __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.i
 
 __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.s: __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.s
@@ -261,7 +250,7 @@ __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.s: __/__/build-java/CGAL
 
 # target to generate assembly for a file
 __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/__/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/CGAL_AABB_tree.dir/__/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.s
 .PHONY : __/__/build-java/CGAL/AABB_tree/CGAL_AABB_treeJAVA_wrap.cxx.s
 
 __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.o: __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.o
@@ -270,7 +259,7 @@ __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.o: __/__/build-python/CGAL/CGA
 
 # target to build an object file
 __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/__/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/__/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.o
 .PHONY : __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.o
 
 __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.i: __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.i
@@ -279,7 +268,7 @@ __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.i: __/__/build-python/CGAL/CGA
 
 # target to preprocess a source file
 __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/__/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/__/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.i
 .PHONY : __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.i
 
 __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.s: __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.s
@@ -288,7 +277,7 @@ __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.s: __/__/build-python/CGAL/CGA
 
 # target to generate assembly for a file
 __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/__/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/build.make SWIG_CGAL/AABB_tree/CMakeFiles/_CGAL_AABB_tree.dir/__/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.s
 .PHONY : __/__/build-python/CGAL/CGAL_AABB_treePYTHON_wrap.cxx.s
 
 # Help Target
@@ -300,12 +289,11 @@ help:
 	@echo "... test"
 	@echo "... install/local"
 	@echo "... edit_cache"
-	@echo "... list_install_components"
-	@echo "... install/strip"
 	@echo "... install"
 	@echo "... _CGAL_AABB_tree"
 	@echo "... rebuild_cache"
 	@echo "... CGAL_AABB_tree"
+	@echo "... list_install_components"
 	@echo "... CGAL_AABB_tree_cpp"
 	@echo "... Object.o"
 	@echo "... Object.i"
@@ -327,6 +315,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

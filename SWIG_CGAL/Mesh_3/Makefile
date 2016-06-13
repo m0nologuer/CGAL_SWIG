@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -111,17 +111,6 @@ install/fast: preinstall/fast
 	/usr/local/Cellar/cmake/3.5.2/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -135,14 +124,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/SWIG_CGAL/Mesh_3/CMakeFiles/progress.marks
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/SWIG_CGAL/Mesh_3/CMakeFiles/progress.marks
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/clean
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/rule
 .PHONY : SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/rule
 
 # Convenience name for target.
@@ -177,12 +166,12 @@ _CGAL_Mesh_3: SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/rule
 
 # fast build rule for target.
 _CGAL_Mesh_3/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build
 .PHONY : _CGAL_Mesh_3/fast
 
 # Convenience name for target.
 SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/rule
 .PHONY : SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/rule
 
 # Convenience name for target.
@@ -192,12 +181,12 @@ CGAL_Mesh_3: SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/rule
 
 # fast build rule for target.
 CGAL_Mesh_3/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build
 .PHONY : CGAL_Mesh_3/fast
 
 # Convenience name for target.
 SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/rule
 .PHONY : SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/rule
 
 # Convenience name for target.
@@ -207,7 +196,7 @@ CGAL_Mesh_3_cpp: SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/rule
 
 # fast build rule for target.
 CGAL_Mesh_3_cpp/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build
 .PHONY : CGAL_Mesh_3_cpp/fast
 
 Object.o: Object.cpp.o
@@ -216,7 +205,7 @@ Object.o: Object.cpp.o
 
 # target to build an object file
 Object.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/Object.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/Object.cpp.o
 .PHONY : Object.cpp.o
 
 Object.i: Object.cpp.i
@@ -225,7 +214,7 @@ Object.i: Object.cpp.i
 
 # target to preprocess a source file
 Object.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/Object.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/Object.cpp.i
 .PHONY : Object.cpp.i
 
 Object.s: Object.cpp.s
@@ -234,7 +223,7 @@ Object.s: Object.cpp.s
 
 # target to generate assembly for a file
 Object.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/Object.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3_cpp.dir/Object.cpp.s
 .PHONY : Object.cpp.s
 
 __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.o: __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.o
@@ -243,7 +232,7 @@ __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.o: __/__/build-java/CGAL/Mesh_
 
 # target to build an object file
 __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/__/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/__/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.o
 .PHONY : __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.o
 
 __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.i: __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.i
@@ -252,7 +241,7 @@ __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.i: __/__/build-java/CGAL/Mesh_
 
 # target to preprocess a source file
 __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/__/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/__/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.i
 .PHONY : __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.i
 
 __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.s: __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.s
@@ -261,7 +250,7 @@ __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.s: __/__/build-java/CGAL/Mesh_
 
 # target to generate assembly for a file
 __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/__/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/CGAL_Mesh_3.dir/__/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.s
 .PHONY : __/__/build-java/CGAL/Mesh_3/CGAL_Mesh_3JAVA_wrap.cxx.s
 
 __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.o: __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.o
@@ -270,7 +259,7 @@ __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.o: __/__/build-python/CGAL/CGAL_M
 
 # target to build an object file
 __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/__/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/__/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.o
 .PHONY : __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.o
 
 __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.i: __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.i
@@ -279,7 +268,7 @@ __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.i: __/__/build-python/CGAL/CGAL_M
 
 # target to preprocess a source file
 __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/__/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/__/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.i
 .PHONY : __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.i
 
 __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.s: __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.s
@@ -288,7 +277,7 @@ __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.s: __/__/build-python/CGAL/CGAL_M
 
 # target to generate assembly for a file
 __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/__/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/build.make SWIG_CGAL/Mesh_3/CMakeFiles/_CGAL_Mesh_3.dir/__/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.s
 .PHONY : __/__/build-python/CGAL/CGAL_Mesh_3PYTHON_wrap.cxx.s
 
 # Help Target
@@ -302,7 +291,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... install/strip"
 	@echo "... _CGAL_Mesh_3"
 	@echo "... rebuild_cache"
 	@echo "... CGAL_Mesh_3"
@@ -327,6 +315,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

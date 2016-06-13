@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -122,27 +122,16 @@ install/fast: preinstall/fast
 	/usr/local/Cellar/cmake/3.5.2/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/SWIG_CGAL/Interpolation/CMakeFiles/progress.marks
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/SWIG_CGAL/Interpolation/CMakeFiles/progress.marks
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/clean
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/rule
 .PHONY : SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/rule
 
 # Convenience name for target.
@@ -177,12 +166,12 @@ _CGAL_Interpolation: SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/
 
 # fast build rule for target.
 _CGAL_Interpolation/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build
 .PHONY : _CGAL_Interpolation/fast
 
 # Convenience name for target.
 SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/rule
 .PHONY : SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/rule
 
 # Convenience name for target.
@@ -192,7 +181,7 @@ CGAL_Interpolation: SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/ru
 
 # fast build rule for target.
 CGAL_Interpolation/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build
 .PHONY : CGAL_Interpolation/fast
 
 __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.o: __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.o
@@ -201,7 +190,7 @@ __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.o: __/__/build-j
 
 # target to build an object file
 __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/__/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/__/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.o
 .PHONY : __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.o
 
 __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.i: __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.i
@@ -210,7 +199,7 @@ __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.i: __/__/build-j
 
 # target to preprocess a source file
 __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/__/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/__/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.i
 .PHONY : __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.i
 
 __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.s: __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.s
@@ -219,7 +208,7 @@ __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.s: __/__/build-j
 
 # target to generate assembly for a file
 __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/__/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/CGAL_Interpolation.dir/__/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.s
 .PHONY : __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.cxx.s
 
 __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.o: __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.o
@@ -228,7 +217,7 @@ __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.o: __/__/build-python/CGAL
 
 # target to build an object file
 __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/__/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/__/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.o
 .PHONY : __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.o
 
 __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.i: __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.i
@@ -237,7 +226,7 @@ __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.i: __/__/build-python/CGAL
 
 # target to preprocess a source file
 __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/__/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/__/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.i
 .PHONY : __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.i
 
 __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.s: __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.s
@@ -246,7 +235,7 @@ __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.s: __/__/build-python/CGAL
 
 # target to generate assembly for a file
 __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/__/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/build.make SWIG_CGAL/Interpolation/CMakeFiles/_CGAL_Interpolation.dir/__/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.s
 .PHONY : __/__/build-python/CGAL/CGAL_InterpolationPYTHON_wrap.cxx.s
 
 # Help Target
@@ -262,7 +251,6 @@ help:
 	@echo "... _CGAL_Interpolation"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... install/strip"
 	@echo "... CGAL_Interpolation"
 	@echo "... __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.o"
 	@echo "... __/__/build-java/CGAL/Interpolation/CGAL_InterpolationJAVA_wrap.i"
@@ -281,6 +269,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

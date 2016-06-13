@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -122,27 +122,16 @@ install/fast: preinstall/fast
 	/usr/local/Cellar/cmake/3.5.2/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/SWIG_CGAL/Spatial_searching/CMakeFiles/progress.marks
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/SWIG_CGAL/Spatial_searching/CMakeFiles/progress.marks
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/clean
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/rule
 .PHONY : SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/rule
 
 # Convenience name for target.
@@ -177,12 +166,12 @@ CGAL_Spatial_searching: SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_sear
 
 # fast build rule for target.
 CGAL_Spatial_searching/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build
 .PHONY : CGAL_Spatial_searching/fast
 
 # Convenience name for target.
 SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/rule
 .PHONY : SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/rule
 
 # Convenience name for target.
@@ -192,7 +181,7 @@ _CGAL_Spatial_searching: SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_se
 
 # fast build rule for target.
 _CGAL_Spatial_searching/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build
 .PHONY : _CGAL_Spatial_searching/fast
 
 __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.o: __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.o
@@ -201,7 +190,7 @@ __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.o: __/__
 
 # target to build an object file
 __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/__/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/__/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.o
 .PHONY : __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.o
 
 __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.i: __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.i
@@ -210,7 +199,7 @@ __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.i: __/__
 
 # target to preprocess a source file
 __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/__/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/__/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.i
 .PHONY : __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.i
 
 __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.s: __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.s
@@ -219,7 +208,7 @@ __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.s: __/__
 
 # target to generate assembly for a file
 __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/__/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/CGAL_Spatial_searching.dir/__/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.s
 .PHONY : __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.cxx.s
 
 __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.o: __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.o
@@ -228,7 +217,7 @@ __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.o: __/__/build-python/
 
 # target to build an object file
 __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/__/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/__/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.o
 .PHONY : __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.o
 
 __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.i: __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.i
@@ -237,7 +226,7 @@ __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.i: __/__/build-python/
 
 # target to preprocess a source file
 __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/__/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/__/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.i
 .PHONY : __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.i
 
 __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.s: __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.s
@@ -246,7 +235,7 @@ __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.s: __/__/build-python/
 
 # target to generate assembly for a file
 __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/__/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/build.make SWIG_CGAL/Spatial_searching/CMakeFiles/_CGAL_Spatial_searching.dir/__/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.s
 .PHONY : __/__/build-python/CGAL/CGAL_Spatial_searchingPYTHON_wrap.cxx.s
 
 # Help Target
@@ -263,7 +252,6 @@ help:
 	@echo "... _CGAL_Spatial_searching"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... install/strip"
 	@echo "... __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.o"
 	@echo "... __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.i"
 	@echo "... __/__/build-java/CGAL/Spatial_searching/CGAL_Spatial_searchingJAVA_wrap.s"
@@ -281,6 +269,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

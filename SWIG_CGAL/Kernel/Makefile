@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.5.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_SOURCE_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master
+CMAKE_BINARY_DIR = /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -111,17 +111,6 @@ install/fast: preinstall/fast
 	/usr/local/Cellar/cmake/3.5.2/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.5.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -135,14 +124,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/SWIG_CGAL/Kernel/CMakeFiles/progress.marks
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master/CMakeFiles 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/SWIG_CGAL/Kernel/CMakeFiles/progress.marks
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/clean
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/preinstall
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/rule
 .PHONY : SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/rule
 
 # Convenience name for target.
@@ -177,12 +166,12 @@ _CGAL_Kernel: SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/rule
 
 # fast build rule for target.
 _CGAL_Kernel/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build
 .PHONY : _CGAL_Kernel/fast
 
 # Convenience name for target.
 SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/rule
 .PHONY : SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/rule
 
 # Convenience name for target.
@@ -192,12 +181,12 @@ CGAL_Kernel: SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/rule
 
 # fast build rule for target.
 CGAL_Kernel/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build
 .PHONY : CGAL_Kernel/fast
 
 # Convenience name for target.
 SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/rule:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/rule
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f CMakeFiles/Makefile2 SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/rule
 .PHONY : SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/rule
 
 # Convenience name for target.
@@ -207,7 +196,7 @@ CGAL_Kernel_cpp: SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/rule
 
 # fast build rule for target.
 CGAL_Kernel_cpp/fast:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build
 .PHONY : CGAL_Kernel_cpp/fast
 
 Bbox_2.o: Bbox_2.cpp.o
@@ -216,7 +205,7 @@ Bbox_2.o: Bbox_2.cpp.o
 
 # target to build an object file
 Bbox_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_2.cpp.o
 .PHONY : Bbox_2.cpp.o
 
 Bbox_2.i: Bbox_2.cpp.i
@@ -225,7 +214,7 @@ Bbox_2.i: Bbox_2.cpp.i
 
 # target to preprocess a source file
 Bbox_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_2.cpp.i
 .PHONY : Bbox_2.cpp.i
 
 Bbox_2.s: Bbox_2.cpp.s
@@ -234,7 +223,7 @@ Bbox_2.s: Bbox_2.cpp.s
 
 # target to generate assembly for a file
 Bbox_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_2.cpp.s
 .PHONY : Bbox_2.cpp.s
 
 Bbox_3.o: Bbox_3.cpp.o
@@ -243,7 +232,7 @@ Bbox_3.o: Bbox_3.cpp.o
 
 # target to build an object file
 Bbox_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_3.cpp.o
 .PHONY : Bbox_3.cpp.o
 
 Bbox_3.i: Bbox_3.cpp.i
@@ -252,7 +241,7 @@ Bbox_3.i: Bbox_3.cpp.i
 
 # target to preprocess a source file
 Bbox_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_3.cpp.i
 .PHONY : Bbox_3.cpp.i
 
 Bbox_3.s: Bbox_3.cpp.s
@@ -261,7 +250,7 @@ Bbox_3.s: Bbox_3.cpp.s
 
 # target to generate assembly for a file
 Bbox_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Bbox_3.cpp.s
 .PHONY : Bbox_3.cpp.s
 
 Direction_2.o: Direction_2.cpp.o
@@ -270,7 +259,7 @@ Direction_2.o: Direction_2.cpp.o
 
 # target to build an object file
 Direction_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_2.cpp.o
 .PHONY : Direction_2.cpp.o
 
 Direction_2.i: Direction_2.cpp.i
@@ -279,7 +268,7 @@ Direction_2.i: Direction_2.cpp.i
 
 # target to preprocess a source file
 Direction_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_2.cpp.i
 .PHONY : Direction_2.cpp.i
 
 Direction_2.s: Direction_2.cpp.s
@@ -288,7 +277,7 @@ Direction_2.s: Direction_2.cpp.s
 
 # target to generate assembly for a file
 Direction_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_2.cpp.s
 .PHONY : Direction_2.cpp.s
 
 Direction_3.o: Direction_3.cpp.o
@@ -297,7 +286,7 @@ Direction_3.o: Direction_3.cpp.o
 
 # target to build an object file
 Direction_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_3.cpp.o
 .PHONY : Direction_3.cpp.o
 
 Direction_3.i: Direction_3.cpp.i
@@ -306,7 +295,7 @@ Direction_3.i: Direction_3.cpp.i
 
 # target to preprocess a source file
 Direction_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_3.cpp.i
 .PHONY : Direction_3.cpp.i
 
 Direction_3.s: Direction_3.cpp.s
@@ -315,7 +304,7 @@ Direction_3.s: Direction_3.cpp.s
 
 # target to generate assembly for a file
 Direction_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Direction_3.cpp.s
 .PHONY : Direction_3.cpp.s
 
 Iso_rectangle_2.o: Iso_rectangle_2.cpp.o
@@ -324,7 +313,7 @@ Iso_rectangle_2.o: Iso_rectangle_2.cpp.o
 
 # target to build an object file
 Iso_rectangle_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Iso_rectangle_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Iso_rectangle_2.cpp.o
 .PHONY : Iso_rectangle_2.cpp.o
 
 Iso_rectangle_2.i: Iso_rectangle_2.cpp.i
@@ -333,7 +322,7 @@ Iso_rectangle_2.i: Iso_rectangle_2.cpp.i
 
 # target to preprocess a source file
 Iso_rectangle_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Iso_rectangle_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Iso_rectangle_2.cpp.i
 .PHONY : Iso_rectangle_2.cpp.i
 
 Iso_rectangle_2.s: Iso_rectangle_2.cpp.s
@@ -342,7 +331,7 @@ Iso_rectangle_2.s: Iso_rectangle_2.cpp.s
 
 # target to generate assembly for a file
 Iso_rectangle_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Iso_rectangle_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Iso_rectangle_2.cpp.s
 .PHONY : Iso_rectangle_2.cpp.s
 
 Line_2.o: Line_2.cpp.o
@@ -351,7 +340,7 @@ Line_2.o: Line_2.cpp.o
 
 # target to build an object file
 Line_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_2.cpp.o
 .PHONY : Line_2.cpp.o
 
 Line_2.i: Line_2.cpp.i
@@ -360,7 +349,7 @@ Line_2.i: Line_2.cpp.i
 
 # target to preprocess a source file
 Line_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_2.cpp.i
 .PHONY : Line_2.cpp.i
 
 Line_2.s: Line_2.cpp.s
@@ -369,7 +358,7 @@ Line_2.s: Line_2.cpp.s
 
 # target to generate assembly for a file
 Line_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_2.cpp.s
 .PHONY : Line_2.cpp.s
 
 Line_3.o: Line_3.cpp.o
@@ -378,7 +367,7 @@ Line_3.o: Line_3.cpp.o
 
 # target to build an object file
 Line_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_3.cpp.o
 .PHONY : Line_3.cpp.o
 
 Line_3.i: Line_3.cpp.i
@@ -387,7 +376,7 @@ Line_3.i: Line_3.cpp.i
 
 # target to preprocess a source file
 Line_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_3.cpp.i
 .PHONY : Line_3.cpp.i
 
 Line_3.s: Line_3.cpp.s
@@ -396,7 +385,7 @@ Line_3.s: Line_3.cpp.s
 
 # target to generate assembly for a file
 Line_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Line_3.cpp.s
 .PHONY : Line_3.cpp.s
 
 Object.o: Object.cpp.o
@@ -405,7 +394,7 @@ Object.o: Object.cpp.o
 
 # target to build an object file
 Object.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Object.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Object.cpp.o
 .PHONY : Object.cpp.o
 
 Object.i: Object.cpp.i
@@ -414,7 +403,7 @@ Object.i: Object.cpp.i
 
 # target to preprocess a source file
 Object.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Object.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Object.cpp.i
 .PHONY : Object.cpp.i
 
 Object.s: Object.cpp.s
@@ -423,7 +412,7 @@ Object.s: Object.cpp.s
 
 # target to generate assembly for a file
 Object.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Object.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Object.cpp.s
 .PHONY : Object.cpp.s
 
 Origin.o: Origin.cpp.o
@@ -432,7 +421,7 @@ Origin.o: Origin.cpp.o
 
 # target to build an object file
 Origin.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Origin.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Origin.cpp.o
 .PHONY : Origin.cpp.o
 
 Origin.i: Origin.cpp.i
@@ -441,7 +430,7 @@ Origin.i: Origin.cpp.i
 
 # target to preprocess a source file
 Origin.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Origin.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Origin.cpp.i
 .PHONY : Origin.cpp.i
 
 Origin.s: Origin.cpp.s
@@ -450,7 +439,7 @@ Origin.s: Origin.cpp.s
 
 # target to generate assembly for a file
 Origin.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Origin.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Origin.cpp.s
 .PHONY : Origin.cpp.s
 
 Plane_3.o: Plane_3.cpp.o
@@ -459,7 +448,7 @@ Plane_3.o: Plane_3.cpp.o
 
 # target to build an object file
 Plane_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Plane_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Plane_3.cpp.o
 .PHONY : Plane_3.cpp.o
 
 Plane_3.i: Plane_3.cpp.i
@@ -468,7 +457,7 @@ Plane_3.i: Plane_3.cpp.i
 
 # target to preprocess a source file
 Plane_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Plane_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Plane_3.cpp.i
 .PHONY : Plane_3.cpp.i
 
 Plane_3.s: Plane_3.cpp.s
@@ -477,7 +466,7 @@ Plane_3.s: Plane_3.cpp.s
 
 # target to generate assembly for a file
 Plane_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Plane_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Plane_3.cpp.s
 .PHONY : Plane_3.cpp.s
 
 Point_2.o: Point_2.cpp.o
@@ -486,7 +475,7 @@ Point_2.o: Point_2.cpp.o
 
 # target to build an object file
 Point_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_2.cpp.o
 .PHONY : Point_2.cpp.o
 
 Point_2.i: Point_2.cpp.i
@@ -495,7 +484,7 @@ Point_2.i: Point_2.cpp.i
 
 # target to preprocess a source file
 Point_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_2.cpp.i
 .PHONY : Point_2.cpp.i
 
 Point_2.s: Point_2.cpp.s
@@ -504,7 +493,7 @@ Point_2.s: Point_2.cpp.s
 
 # target to generate assembly for a file
 Point_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_2.cpp.s
 .PHONY : Point_2.cpp.s
 
 Point_3.o: Point_3.cpp.o
@@ -513,7 +502,7 @@ Point_3.o: Point_3.cpp.o
 
 # target to build an object file
 Point_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_3.cpp.o
 .PHONY : Point_3.cpp.o
 
 Point_3.i: Point_3.cpp.i
@@ -522,7 +511,7 @@ Point_3.i: Point_3.cpp.i
 
 # target to preprocess a source file
 Point_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_3.cpp.i
 .PHONY : Point_3.cpp.i
 
 Point_3.s: Point_3.cpp.s
@@ -531,7 +520,7 @@ Point_3.s: Point_3.cpp.s
 
 # target to generate assembly for a file
 Point_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Point_3.cpp.s
 .PHONY : Point_3.cpp.s
 
 Polygon_2.o: Polygon_2.cpp.o
@@ -540,7 +529,7 @@ Polygon_2.o: Polygon_2.cpp.o
 
 # target to build an object file
 Polygon_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Polygon_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Polygon_2.cpp.o
 .PHONY : Polygon_2.cpp.o
 
 Polygon_2.i: Polygon_2.cpp.i
@@ -549,7 +538,7 @@ Polygon_2.i: Polygon_2.cpp.i
 
 # target to preprocess a source file
 Polygon_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Polygon_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Polygon_2.cpp.i
 .PHONY : Polygon_2.cpp.i
 
 Polygon_2.s: Polygon_2.cpp.s
@@ -558,7 +547,7 @@ Polygon_2.s: Polygon_2.cpp.s
 
 # target to generate assembly for a file
 Polygon_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Polygon_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Polygon_2.cpp.s
 .PHONY : Polygon_2.cpp.s
 
 Ray_2.o: Ray_2.cpp.o
@@ -567,7 +556,7 @@ Ray_2.o: Ray_2.cpp.o
 
 # target to build an object file
 Ray_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_2.cpp.o
 .PHONY : Ray_2.cpp.o
 
 Ray_2.i: Ray_2.cpp.i
@@ -576,7 +565,7 @@ Ray_2.i: Ray_2.cpp.i
 
 # target to preprocess a source file
 Ray_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_2.cpp.i
 .PHONY : Ray_2.cpp.i
 
 Ray_2.s: Ray_2.cpp.s
@@ -585,7 +574,7 @@ Ray_2.s: Ray_2.cpp.s
 
 # target to generate assembly for a file
 Ray_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_2.cpp.s
 .PHONY : Ray_2.cpp.s
 
 Ray_3.o: Ray_3.cpp.o
@@ -594,7 +583,7 @@ Ray_3.o: Ray_3.cpp.o
 
 # target to build an object file
 Ray_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_3.cpp.o
 .PHONY : Ray_3.cpp.o
 
 Ray_3.i: Ray_3.cpp.i
@@ -603,7 +592,7 @@ Ray_3.i: Ray_3.cpp.i
 
 # target to preprocess a source file
 Ray_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_3.cpp.i
 .PHONY : Ray_3.cpp.i
 
 Ray_3.s: Ray_3.cpp.s
@@ -612,7 +601,7 @@ Ray_3.s: Ray_3.cpp.s
 
 # target to generate assembly for a file
 Ray_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Ray_3.cpp.s
 .PHONY : Ray_3.cpp.s
 
 Segment_2.o: Segment_2.cpp.o
@@ -621,7 +610,7 @@ Segment_2.o: Segment_2.cpp.o
 
 # target to build an object file
 Segment_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_2.cpp.o
 .PHONY : Segment_2.cpp.o
 
 Segment_2.i: Segment_2.cpp.i
@@ -630,7 +619,7 @@ Segment_2.i: Segment_2.cpp.i
 
 # target to preprocess a source file
 Segment_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_2.cpp.i
 .PHONY : Segment_2.cpp.i
 
 Segment_2.s: Segment_2.cpp.s
@@ -639,7 +628,7 @@ Segment_2.s: Segment_2.cpp.s
 
 # target to generate assembly for a file
 Segment_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_2.cpp.s
 .PHONY : Segment_2.cpp.s
 
 Segment_3.o: Segment_3.cpp.o
@@ -648,7 +637,7 @@ Segment_3.o: Segment_3.cpp.o
 
 # target to build an object file
 Segment_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_3.cpp.o
 .PHONY : Segment_3.cpp.o
 
 Segment_3.i: Segment_3.cpp.i
@@ -657,7 +646,7 @@ Segment_3.i: Segment_3.cpp.i
 
 # target to preprocess a source file
 Segment_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_3.cpp.i
 .PHONY : Segment_3.cpp.i
 
 Segment_3.s: Segment_3.cpp.s
@@ -666,7 +655,7 @@ Segment_3.s: Segment_3.cpp.s
 
 # target to generate assembly for a file
 Segment_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Segment_3.cpp.s
 .PHONY : Segment_3.cpp.s
 
 Sphere_3.o: Sphere_3.cpp.o
@@ -675,7 +664,7 @@ Sphere_3.o: Sphere_3.cpp.o
 
 # target to build an object file
 Sphere_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Sphere_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Sphere_3.cpp.o
 .PHONY : Sphere_3.cpp.o
 
 Sphere_3.i: Sphere_3.cpp.i
@@ -684,7 +673,7 @@ Sphere_3.i: Sphere_3.cpp.i
 
 # target to preprocess a source file
 Sphere_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Sphere_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Sphere_3.cpp.i
 .PHONY : Sphere_3.cpp.i
 
 Sphere_3.s: Sphere_3.cpp.s
@@ -693,7 +682,7 @@ Sphere_3.s: Sphere_3.cpp.s
 
 # target to generate assembly for a file
 Sphere_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Sphere_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Sphere_3.cpp.s
 .PHONY : Sphere_3.cpp.s
 
 Tetrahedron_3.o: Tetrahedron_3.cpp.o
@@ -702,7 +691,7 @@ Tetrahedron_3.o: Tetrahedron_3.cpp.o
 
 # target to build an object file
 Tetrahedron_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Tetrahedron_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Tetrahedron_3.cpp.o
 .PHONY : Tetrahedron_3.cpp.o
 
 Tetrahedron_3.i: Tetrahedron_3.cpp.i
@@ -711,7 +700,7 @@ Tetrahedron_3.i: Tetrahedron_3.cpp.i
 
 # target to preprocess a source file
 Tetrahedron_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Tetrahedron_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Tetrahedron_3.cpp.i
 .PHONY : Tetrahedron_3.cpp.i
 
 Tetrahedron_3.s: Tetrahedron_3.cpp.s
@@ -720,7 +709,7 @@ Tetrahedron_3.s: Tetrahedron_3.cpp.s
 
 # target to generate assembly for a file
 Tetrahedron_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Tetrahedron_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Tetrahedron_3.cpp.s
 .PHONY : Tetrahedron_3.cpp.s
 
 Triangle_2.o: Triangle_2.cpp.o
@@ -729,7 +718,7 @@ Triangle_2.o: Triangle_2.cpp.o
 
 # target to build an object file
 Triangle_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_2.cpp.o
 .PHONY : Triangle_2.cpp.o
 
 Triangle_2.i: Triangle_2.cpp.i
@@ -738,7 +727,7 @@ Triangle_2.i: Triangle_2.cpp.i
 
 # target to preprocess a source file
 Triangle_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_2.cpp.i
 .PHONY : Triangle_2.cpp.i
 
 Triangle_2.s: Triangle_2.cpp.s
@@ -747,7 +736,7 @@ Triangle_2.s: Triangle_2.cpp.s
 
 # target to generate assembly for a file
 Triangle_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_2.cpp.s
 .PHONY : Triangle_2.cpp.s
 
 Triangle_3.o: Triangle_3.cpp.o
@@ -756,7 +745,7 @@ Triangle_3.o: Triangle_3.cpp.o
 
 # target to build an object file
 Triangle_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_3.cpp.o
 .PHONY : Triangle_3.cpp.o
 
 Triangle_3.i: Triangle_3.cpp.i
@@ -765,7 +754,7 @@ Triangle_3.i: Triangle_3.cpp.i
 
 # target to preprocess a source file
 Triangle_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_3.cpp.i
 .PHONY : Triangle_3.cpp.i
 
 Triangle_3.s: Triangle_3.cpp.s
@@ -774,7 +763,7 @@ Triangle_3.s: Triangle_3.cpp.s
 
 # target to generate assembly for a file
 Triangle_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Triangle_3.cpp.s
 .PHONY : Triangle_3.cpp.s
 
 Vector_2.o: Vector_2.cpp.o
@@ -783,7 +772,7 @@ Vector_2.o: Vector_2.cpp.o
 
 # target to build an object file
 Vector_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_2.cpp.o
 .PHONY : Vector_2.cpp.o
 
 Vector_2.i: Vector_2.cpp.i
@@ -792,7 +781,7 @@ Vector_2.i: Vector_2.cpp.i
 
 # target to preprocess a source file
 Vector_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_2.cpp.i
 .PHONY : Vector_2.cpp.i
 
 Vector_2.s: Vector_2.cpp.s
@@ -801,7 +790,7 @@ Vector_2.s: Vector_2.cpp.s
 
 # target to generate assembly for a file
 Vector_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_2.cpp.s
 .PHONY : Vector_2.cpp.s
 
 Vector_3.o: Vector_3.cpp.o
@@ -810,7 +799,7 @@ Vector_3.o: Vector_3.cpp.o
 
 # target to build an object file
 Vector_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_3.cpp.o
 .PHONY : Vector_3.cpp.o
 
 Vector_3.i: Vector_3.cpp.i
@@ -819,7 +808,7 @@ Vector_3.i: Vector_3.cpp.i
 
 # target to preprocess a source file
 Vector_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_3.cpp.i
 .PHONY : Vector_3.cpp.i
 
 Vector_3.s: Vector_3.cpp.s
@@ -828,7 +817,7 @@ Vector_3.s: Vector_3.cpp.s
 
 # target to generate assembly for a file
 Vector_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Vector_3.cpp.s
 .PHONY : Vector_3.cpp.s
 
 Weighted_point_2.o: Weighted_point_2.cpp.o
@@ -837,7 +826,7 @@ Weighted_point_2.o: Weighted_point_2.cpp.o
 
 # target to build an object file
 Weighted_point_2.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_2.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_2.cpp.o
 .PHONY : Weighted_point_2.cpp.o
 
 Weighted_point_2.i: Weighted_point_2.cpp.i
@@ -846,7 +835,7 @@ Weighted_point_2.i: Weighted_point_2.cpp.i
 
 # target to preprocess a source file
 Weighted_point_2.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_2.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_2.cpp.i
 .PHONY : Weighted_point_2.cpp.i
 
 Weighted_point_2.s: Weighted_point_2.cpp.s
@@ -855,7 +844,7 @@ Weighted_point_2.s: Weighted_point_2.cpp.s
 
 # target to generate assembly for a file
 Weighted_point_2.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_2.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_2.cpp.s
 .PHONY : Weighted_point_2.cpp.s
 
 Weighted_point_3.o: Weighted_point_3.cpp.o
@@ -864,7 +853,7 @@ Weighted_point_3.o: Weighted_point_3.cpp.o
 
 # target to build an object file
 Weighted_point_3.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_3.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_3.cpp.o
 .PHONY : Weighted_point_3.cpp.o
 
 Weighted_point_3.i: Weighted_point_3.cpp.i
@@ -873,7 +862,7 @@ Weighted_point_3.i: Weighted_point_3.cpp.i
 
 # target to preprocess a source file
 Weighted_point_3.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_3.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_3.cpp.i
 .PHONY : Weighted_point_3.cpp.i
 
 Weighted_point_3.s: Weighted_point_3.cpp.s
@@ -882,7 +871,7 @@ Weighted_point_3.s: Weighted_point_3.cpp.s
 
 # target to generate assembly for a file
 Weighted_point_3.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_3.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/Weighted_point_3.cpp.s
 .PHONY : Weighted_point_3.cpp.s
 
 __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.o: __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.o
@@ -891,7 +880,7 @@ __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.o: __/__/build-java/CGAL/Kerne
 
 # target to build an object file
 __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/__/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/__/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.o
 .PHONY : __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.o
 
 __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.i: __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.i
@@ -900,7 +889,7 @@ __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.i: __/__/build-java/CGAL/Kerne
 
 # target to preprocess a source file
 __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/__/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/__/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.i
 .PHONY : __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.i
 
 __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.s: __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.s
@@ -909,7 +898,7 @@ __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.s: __/__/build-java/CGAL/Kerne
 
 # target to generate assembly for a file
 __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/__/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel.dir/__/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.s
 .PHONY : __/__/build-java/CGAL/Kernel/CGAL_KernelJAVA_wrap.cxx.s
 
 __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.o: __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.o
@@ -918,7 +907,7 @@ __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.o: __/__/build-python/CGAL/CGAL_K
 
 # target to build an object file
 __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/__/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/__/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.o
 .PHONY : __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.o
 
 __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.i: __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.i
@@ -927,7 +916,7 @@ __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.i: __/__/build-python/CGAL/CGAL_K
 
 # target to preprocess a source file
 __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/__/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/__/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.i
 .PHONY : __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.i
 
 __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.s: __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.s
@@ -936,7 +925,7 @@ __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.s: __/__/build-python/CGAL/CGAL_K
 
 # target to generate assembly for a file
 __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/__/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/_CGAL_Kernel.dir/__/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.s
 .PHONY : __/__/build-python/CGAL/CGAL_KernelPYTHON_wrap.cxx.s
 
 global_functions.o: global_functions.cpp.o
@@ -945,7 +934,7 @@ global_functions.o: global_functions.cpp.o
 
 # target to build an object file
 global_functions.cpp.o:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/global_functions.cpp.o
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/global_functions.cpp.o
 .PHONY : global_functions.cpp.o
 
 global_functions.i: global_functions.cpp.i
@@ -954,7 +943,7 @@ global_functions.i: global_functions.cpp.i
 
 # target to preprocess a source file
 global_functions.cpp.i:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/global_functions.cpp.i
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/global_functions.cpp.i
 .PHONY : global_functions.cpp.i
 
 global_functions.s: global_functions.cpp.s
@@ -963,7 +952,7 @@ global_functions.s: global_functions.cpp.s
 
 # target to generate assembly for a file
 global_functions.cpp.s:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/global_functions.cpp.s
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(MAKE) -f SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/build.make SWIG_CGAL/Kernel/CMakeFiles/CGAL_Kernel_cpp.dir/global_functions.cpp.s
 .PHONY : global_functions.cpp.s
 
 # Help Target
@@ -975,11 +964,10 @@ help:
 	@echo "... test"
 	@echo "... install/local"
 	@echo "... rebuild_cache"
-	@echo "... list_install_components"
 	@echo "... _CGAL_Kernel"
 	@echo "... CGAL_Kernel"
+	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... install/strip"
 	@echo "... edit_cache"
 	@echo "... CGAL_Kernel_cpp"
 	@echo "... Bbox_2.o"
@@ -1077,6 +1065,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/sakunthalapanditharatne/Downloads/cgal-swig-bindings-master && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/sakunthalapanditharatne/Documents/Opensource/cgal-swig-bindings && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
