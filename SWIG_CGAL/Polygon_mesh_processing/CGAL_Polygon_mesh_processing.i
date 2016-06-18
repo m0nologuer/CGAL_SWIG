@@ -71,6 +71,7 @@ SWIG_CGAL_declare_identifier_of_template_class(Mesh_segmenter,Polygon_mesh_segme
 %include "std_vector.i"
 %template(Polyhedron_list) std::vector<Polyhedron_3_SWIG_wrapper>;
 %template(PolySignature) MeshSignature<Polyhedron_3_SWIG_wrapper>;
+%template(BoundingBox) MeshBoundingBox<Polyhedron_3_SWIG_wrapper>;
 
 %include "SWIG_CGAL/Polygon_mesh_processing/Side_of_triangle_mesh.h"
 %typemap(javaimports) Side_of_triangle_mesh_wrapper %{import CGAL.Kernel.Point_3; import CGAL.Kernel.Bounded_side; import CGAL.Polyhedron_3.Polyhedron_3;%}

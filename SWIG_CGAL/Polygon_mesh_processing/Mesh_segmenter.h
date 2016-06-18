@@ -82,8 +82,8 @@ typedef Polyhedron_from_facelist_builder<Polyhedron_3_::HalfedgeDS> Poly_Builder
 template<class Polyhedron_wrapper>
 struct MeshSignature
     {
-        double weights[1000];
-        Point_3 points[1000];
+        double weights[15625];
+        Point_3 points[15625];
 
         double weight_at(int i){
             return weights[i];
@@ -126,7 +126,7 @@ struct MeshSignature
             bool flip_z = normalized_com.z() > 0.5;
 
             //initialize signature to zero
-            for (int i = 0; i < 1000; ++i){
+            for (int i = 0; i < 15625; ++i){
                 weights[i] = 0;
                 points[i] = Point_3(0,0,0);
             }
@@ -147,11 +147,11 @@ struct MeshSignature
                 if (flip_z) {scaled_pos = Point_3(scaled_pos.x(), scaled_pos.y(), 1-scaled_pos.z()); }
 
                 //Place in box
-                int x_box = (int)(fmin(scaled_pos.x()*10,9));
-                int y_box = (int)(fmin(scaled_pos.y()*10,9));
-                int z_box = (int)(fmin(scaled_pos.z()*10,9));
+                int x_box = (int)(fmin(scaled_pos.x()*25,24));
+                int y_box = (int)(fmin(scaled_pos.y()*25,24));
+                int z_box = (int)(fmin(scaled_pos.z()*25,24));
 
-                int box_index = x_box*10*10+y_box*10+z_box;
+                int box_index = x_box*25*25+y_box*25+z_box;
 
                 //Calculate the area of every incident face
                 double vertex_angle = 0;
@@ -222,9 +222,9 @@ struct MeshBoundingBox
     Vector_3 z_axis;
 
     Point_3 get_origin(){return min_point;}
-    Point_3 get_x_axis(){return x_axis;}
-    Point_3 get_y_axis(){return y_axis;}
-    Point_3 get_z_axis(){return z_axis;}
+    Vector_3 get_x_axis(){return x_axis;}
+    Vector_3 get_y_axis(){return y_axis;}
+    Vector_3 get_z_axis(){return z_axis;}
 
     MeshBoundingBox(Polyhedron_wrapper& poly){
         //get bounds
@@ -262,18 +262,37 @@ struct MeshBoundingBox
         //Re-align the box
         if (flip_x){
             min_point = min_point + x_axis;
-            x_axis = -1 * x_axis;
-        }
+            x_axis = -x_axis;
+        };
         if (flip_y){
             min_point = min_point + y_axis;
-            y_axis = -1 * y_axis;
-        }
+            y_axis = -y_axis;
+        };
         if (flip_z){
             min_point = min_point + z_axis;
-            z_axis = -1 * z_axis;
-        }
-    }
-}
+            z_axis = -z_axis;
+        };
+    };
+
+};
+
+template<class Point>
+struct Point_transform {
+
+    Point_transform(Vector_3 t, Vector_3 x, Vector_3 y,
+        Vector_3 z): translation(t), x_axis(x), y_axis(y), z_axis(z){};
+
+    Point operator()( Point& p) { 
+        Vector_3 p_vec = Vector_3(p.x(), p.y(), p.z())+ translation;
+        p = Point(p_vec*x_axis, p_vec*y_axis, p_vec*z_axis);
+        return p;
+    };
+    private:
+        Vector_3 translation;
+        Vector_3 x_axis;
+        Vector_3 y_axis;
+        Vector_3 z_axis;
+};
 
 template <class Polyhedron_wrapper>
 class Polygon_mesh_segmentation_wrapper
@@ -296,6 +315,45 @@ public:
         Polyhedron_wrapper p_wrap(mesh);
         return mesh;
     }
+
+    Polyhedron_wrapper concatenate_mesh(std::vector<Polyhedron_wrapper> polylist){
+        
+        std::vector<Polyhedron_3_::Facet_const_handle> total_faces = std::vector<Polyhedron_3_::Facet_const_handle>();
+
+        //Go through all the meshes
+        for (typename std::vector<Polyhedron_wrapper>::iterator mesh = polylist.begin() ; mesh != polylist.end(); ++mesh)
+        {
+            //Collect all the faces
+            for(Polyhedron_3_::Facet_iterator facet_it = mesh->get_data().facets_begin();
+                facet_it != mesh->get_data().facets_end(); ++facet_it) {
+
+                total_faces.push_back(facet_it);
+            }
+        }
+
+        //Build faces into mesh
+        Poly_Builder mesh_builder = Poly_Builder(total_faces);
+        
+        //wrap
+        Polyhedron_wrapper p_wrap;
+        p_wrap.get_data().delegate(mesh_builder);
+
+        return p_wrap;
+    }
+
+    Polyhedron_wrapper transform_mesh(Vector_3 translation, Vector_3 x_axis,
+        Vector_3 y_axis, Vector_3 z_axis){
+
+        Point_transform<CGAL::Point_3<CGAL::Epick> > p_transform(translation, x_axis, y_axis, z_axis);
+
+        Polyhedron_3_ mesh = poly.get_data();
+        std::transform( mesh.points_begin(), mesh.points_end(), mesh.points_begin(), 
+            p_transform) ;
+
+        Polyhedron_wrapper p_wrap(mesh);
+        return p_wrap;
+    }
+    
     
     std::vector<Polyhedron_wrapper> segmentation()
     {
@@ -328,7 +386,7 @@ public:
         
         //Split the mesh into seperate lists of faces per segment
         for(Polyhedron_3_::Facet_iterator facet_it = mesh.facets_begin();
-          facet_it != mesh.facets_end(); ++facet_it, ++facet_id) {
+          facet_it != mesh.facets_end(); ++facet_it) {
 
             size_t index = segment_property_map[facet_it];
             polyhedron_facets[index].push_back(facet_it);
