@@ -16,6 +16,14 @@
 #include <CGAL/Polygon_mesh_processing/stitch_borders.h>
 #include <CGAL/bounding_box.h>
 
+#include <CGAL/Simple_cartesian.h>
+#include <CGAL/AABB_tree.h>
+#include <CGAL/AABB_traits.h>
+#include <CGAL/AABB_face_graph_triangle_primitive.h>
+#include <CGAL/algorithm.h>
+#include <CGAL/Side_of_triangle_mesh.h>
+
+
 // Property map associating a facet with an integer as id to an
 // element in a vector stored internally
 template<class ValueType>
@@ -226,6 +234,13 @@ struct MeshBoundingBox
     Vector_3 get_y_axis(){return y_axis;}
     Vector_3 get_z_axis(){return z_axis;}
 
+    MeshBoundingBox(Vector_3 min, Vector_3 x, Vector_3 y, Vector_3 z){
+        min_point = Point_3(min.x(), min.y(), min.z());
+        x_axis = x;
+        y_axis = y;
+        z_axis = z;
+    }
+
     MeshBoundingBox(Polyhedron_wrapper& poly){
         //get bounds
         Polyhedron_3_ mesh = poly.get_data();
@@ -314,6 +329,55 @@ public:
         CGAL::Polygon_mesh_processing::stitch_borders(mesh);
         Polyhedron_wrapper p_wrap(mesh);
         return mesh;
+    }
+
+    typedef CGAL::AABB_face_graph_triangle_primitive<Polyhedron_3_> Primitive;
+    typedef CGAL::AABB_traits<CGAL::Epick, Primitive> Traits;
+    typedef CGAL::AABB_tree<Traits> Tree;
+    typedef CGAL::Side_of_triangle_mesh<Polyhedron_3_, CGAL::Epick> Point_inside;
+
+    std::vector<std::vector<std::vector<float> > > voxelize(int dimension){
+        // Construct AABB tree with a KdTree
+        Polyhedron_3_ polyhedron = poly.get_data();
+        Tree tree(faces(polyhedron).first, faces(polyhedron).second, polyhedron);
+        tree.accelerate_distance_queries();
+        // Initialize the point-in-polyhedron tester
+        Point_inside inside_tester(tree);
+
+        //Initialize 3D grif of booleans
+        std::vector<std::vector<std::vector<float> > > voxel_grid = std::vector<std::vector<std::vector<float> > >();
+        for (int i = 0; i < dimension; ++i){
+            voxel_grid.push_back(std::vector<std::vector<float> >());
+            for (int j = 0; j < dimension; ++j){
+                voxel_grid[i].push_back(std::vector<float>());
+                for (int k = 0; k < dimension; ++k)
+                    voxel_grid[i][j].push_back(0.0);
+            }
+        }        
+
+        MeshBoundingBox<Polyhedron_wrapper> box = MeshBoundingBox<Polyhedron_wrapper>(poly);
+
+        for (int i = 0; i < dimension; ++i)
+            for (int j = 0; j < dimension; ++j)
+                for (int k = 0; k < dimension; ++k)
+                {
+                    float x = (float)i/(float)dimension;
+                    float y = (float)j/(float)dimension;
+                    float z = (float)k/(float)dimension;
+
+                    Vector_3 offset = Vector_3(box.x_axis.x()*x + box.y_axis.x()*y + box.z_axis.x()*z,
+                        box.x_axis.y()*x + box.y_axis.y()*y + box.z_axis.y()*z,
+                        box.x_axis.z()*x + box.y_axis.z()*y + box.z_axis.z()*z);
+
+                    CGAL::Point_3<CGAL::Epick> point = CGAL::Point_3<CGAL::Epick>(box.min_point.x() + offset.x(),
+                        box.min_point.y() + offset.y(),box.min_point.z() + offset.z());
+
+                    // Determine the side and return true if inside!
+                    bool inside = (inside_tester(point) == CGAL::ON_BOUNDED_SIDE);
+                    voxel_grid[i][j][k] = inside ? 1.0 : 0.0;
+                }
+        
+        return voxel_grid;
     }
 
     Polyhedron_wrapper concatenate_mesh(std::vector<Polyhedron_wrapper> polylist){

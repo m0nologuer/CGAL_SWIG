@@ -99,6 +99,10 @@ SWIG_CGAL_declare_identifier_of_template_class(Halfedge_pair,std::pair<Polyhedro
 %template(Polygon_Vector) std::vector< std::vector<int> >;
 %template(Polylines) std::vector< std::vector<Point_3> >;
 
+%template(VoxelLine) std::vector<float> ;
+%template(VoxelSquare) std::vector< std::vector<float> >;
+%template(VoxelCube) std::vector< std::vector< std::vector<float> > >;
+
 
 //includes
 %{
