@@ -418,6 +418,156 @@ public:
         return p_wrap;
     }
     
+    std::vector< std::vector<Point_3> > get_border_loops(){
+
+        Polyhedron_3_ mesh = poly.get_data();
+        std::vector< std::vector<Point_3> > border_loops = std::vector< std::vector<Point_3> >();
+        std::vector<Polyhedron_3_::Halfedge_handle> used_halfedges = std::vector<Polyhedron_3_::Halfedge_handle>();
+
+        // loop through all border halfedges
+        for(Polyhedron_3_::Halfedge_iterator he_it = mesh.border_halfedges_begin();
+          he_it != mesh.halfedges_end(); ++he_it) {
+
+            //if we haven't found this already
+            if (std::find(used_halfedges.begin(), used_halfedges.end(), he_it) == used_halfedges.end()) {
+                //for each halfedge, extract a halfedge loop
+                std::vector<Point_3> point_loop = std::vector<Point_3>();
+                for (Polyhedron_3_::Halfedge_handle loop = he_it->next(); loop != he_it; loop = loop->next()){
+                    point_loop.push_back(loop->vertex()->point());
+                    used_halfedges.push_back(loop);
+                }
+
+                border_loops.push_back(point_loop);
+            }
+        }
+        return border_loops;
+    }
+
+    std::vector< std::vector<Polyhedron_3_::Halfedge_handle> > get_cuts(){
+
+        Polyhedron_3_ mesh = poly.get_data();
+        boost::unordered_map<Polyhedron_3_::Facet_handle, bool> marked_faces = boost::unordered_map<Polyhedron_3_::Facet_handle, bool>();
+        boost::unordered_map<Polyhedron_3_::Vertex_handle, bool> marked_vertices = boost::unordered_map<Polyhedron_3_::Vertex_handle, bool>();
+        boost::unordered_map<Polyhedron_3_::Halfedge_handle,bool> marked_edges = boost::unordered_map<Polyhedron_3_::Halfedge_handle,bool> ();
+
+        marked_faces.insert(std::make_pair(mesh.facets_begin(), true));
+        bool keep_cutting = true;
+
+        //while there remains an edge e adjacent to only one triangle t Remove e and t
+        while(keep_cutting){
+
+            keep_cutting = false; //assume we're not going to find anything
+            
+            //search through halfedges (except borders)
+            for(Polyhedron_3_::Halfedge_iterator he_it = mesh.halfedges_begin();
+              he_it != mesh.border_halfedges_begin(); ++he_it) {
+
+                //if this edge is not marked
+                if(marked_edges.find(he_it) == marked_edges.end()){
+
+                    bool incident_facet_marked = marked_faces.find(he_it->facet()) != marked_faces.end();
+                    bool opposite_facet_marked = marked_faces.find(he_it->opposite()->facet()) != marked_faces.end();
+
+                    //If this is the kind of edge we want
+                    if (incident_facet_marked != opposite_facet_marked){
+
+                        //Mark this edge pair
+                        marked_edges.insert(std::make_pair(he_it,true));
+                        marked_edges.insert(std::make_pair(he_it->opposite(),true));
+
+                        //Mark the correct face as well
+                        if (!incident_facet_marked)
+                            marked_faces.insert(std::make_pair(he_it->facet(), true));
+                        else
+                            marked_faces.insert(std::make_pair(he_it->opposite()->facet(), true));
+                    
+                        keep_cutting = true;
+                    }
+                }
+            }
+        }
+
+        //while there remains a vertex v adjacent to only one edge e Remove v and e
+        while(keep_cutting){
+
+            keep_cutting = false; //assume we're not going to find anything
+            
+            //search through vertices
+            for(Polyhedron_3_::Vertex_iterator v_it = mesh.vertices_begin();
+              v_it != mesh.vertices_end(); ++v_it) {
+
+                //if this vertex is not marked
+                if(marked_vertices.find(v_it) == marked_vertices.end()){
+
+                    //check how many non-marked edges are connected
+                    int non_marked_edge_count = 0;
+                    Polyhedron_3_::Halfedge_handle lone_edge;
+
+                    for(Polyhedron_3_::Halfedge_handle he_it = v_it->vertex_begin();
+                        ++he_it != v_it->vertex_begin();){
+                        //if this edge is not marked
+                        if(marked_edges.find(he_it) != marked_edges.end()){
+                            non_marked_edge_count++;
+                            lone_edge= he_it;
+                        }
+                    } 
+
+                    //If this is a lone vertex
+                    if (non_marked_edge_count == 1){
+
+                        //Mark this edge pair
+                        marked_edges.insert(std::make_pair(lone_edge,true));
+                        marked_edges.insert(std::make_pair(lone_edge->opposite(),true));
+
+                        //Mark this vertex
+                        marked_vertices.insert(std::make_pair(lone_edge,true));
+
+                        keep_cutting = true;
+                    }
+                }
+            }
+        }
+
+        //Pull out the cuts
+        std::vector< std::vector<Polyhedron_3_::Halfedge_handle> > cuts = std::vector< std::vector<Polyhedron_3_::Halfedge_handle> >();
+        for(Polyhedron_3_::Vertex_iterator v_it = mesh.vertices_begin();
+              v_it != mesh.vertices_end(); ++v_it) {
+
+            //if this vertex is not marked
+            if(marked_vertices.find(v_it) == marked_vertices.end()){
+
+                //start a new loop
+                cuts.push_back(std::vector<Polyhedron_3_::Halfedge_handle>());
+                bool finished_loop = false;
+                Polyhedron_3_::Vertex_handle loop_vertex = v_it;
+
+                while (!finished_loop){
+                    //look for the direction to go in
+                    for(Polyhedron_3_::Halfedge_handle he_it = v_it->vertex_begin();
+                            ++he_it != v_it->vertex_begin();){
+                       
+                        //if this edge is not marked
+                        if(marked_edges.find(he_it) == marked_edges.end()){
+                           loop_vertex = he_it->opposite()->vertex();
+                           //if the vertex is not marked
+                            if (marked_vertices.find(loop_vertex)  == marked_vertices.end()){
+                                cuts.back().push_back(he_it);
+
+                                //mark the vertex
+                                marked_vertices.insert(std::make_pair(loop_vertex,true));
+                            }
+                            else{
+                                finished_loop = true;
+                            }
+
+                        }
+                    }    
+                }
+            }
+        }
+
+        return cuts;
+    }
     
     std::vector<Polyhedron_wrapper> segmentation()
     {
