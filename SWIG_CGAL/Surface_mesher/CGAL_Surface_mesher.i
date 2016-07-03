@@ -134,6 +134,10 @@ SWIG_CGAL_import_Polyhedron_3_SWIG_wrapper
   {
     make_surface_mesh(c2t3,surface,criteria,tag,20);
   }
+  void  make_surface_mesh(Complex_2_in_triangulation_3_SWIG_wrapper& c2t3,const Implicit_surface_3_wrapper<IS_GLI_3,Gray_level_image_3_wrapper<GLI_3> >& surface,const Surface_mesh_criteria_3_wrapper<SMDC_3>& criteria)
+  {
+    make_surface_mesh(c2t3,surface,criteria,MANIFOLD_TAG,20);
+  }
 %}
 
 #ifdef SWIG_CGAL_HAS_Surface_mesher_USER_PACKAGE

@@ -11,5 +11,8 @@
 #include <SWIG_CGAL/Polygon_mesh_processing/Polygon_mesh_slicer.h>
 #include <SWIG_CGAL/Polygon_mesh_processing/utils.h>
 #include <SWIG_CGAL/Polygon_mesh_processing/Mesh_segmenter.h>
+#include <SWIG_CGAL/Polygon_mesh_processing/Mesh_cuts.h>
+#include <SWIG_CGAL/Polygon_mesh_processing/Mesh_util.h>
+#include <SWIG_CGAL/Polygon_mesh_processing/Mesh_signature.h>
 
 #endif //SWIG_CGAL_POLYGON_MESH_PROCESSING_ALL_INCLUDES_H

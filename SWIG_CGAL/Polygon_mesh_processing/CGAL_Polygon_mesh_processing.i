@@ -64,14 +64,31 @@ SWIG_CGAL_import_Polyhedron_3_Vertex_handle_SWIG_wrapper
 %typemap(javaimports) Polygon_mesh_slicer_wrapper %{import CGAL.Kernel.Plane_3; import CGAL.Polyhedron_3.Polyhedron_3;%}
 SWIG_CGAL_declare_identifier_of_template_class(Polygon_mesh_slicer,Polygon_mesh_slicer_wrapper<Polyhedron_3_SWIG_wrapper>)
 
+%include "SWIG_CGAL/Polygon_mesh_processing/Mesh_util.h"
+%typemap(javaimports) Polygon_mesh_util_wrapper %{import CGAL.Kernel.Plane_3; import CGAL.Polyhedron_3.Polyhedron_3;%}
+SWIG_CGAL_declare_identifier_of_template_class(Mesh_util,Polygon_mesh_util_wrapper<Polyhedron_3_SWIG_wrapper>)
+
+%include "SWIG_CGAL/Polygon_mesh_processing/Mesh_cuts.h"
+%typemap(javaimports) Polygon_mesh_cuts_wrapper %{import CGAL.Kernel.Plane_3; import CGAL.Polyhedron_3.Polyhedron_3;%}
+SWIG_CGAL_declare_identifier_of_template_class(Mesh_cuts,Polygon_mesh_cuts_wrapper<Polyhedron_3_SWIG_wrapper>)
+
 %include "SWIG_CGAL/Polygon_mesh_processing/Mesh_segmenter.h"
 %typemap(javaimports) Polygon_mesh_segmenter_wrapper %{import CGAL.Kernel.Plane_3; import CGAL.Polyhedron_3.Polyhedron_3;%}
 SWIG_CGAL_declare_identifier_of_template_class(Mesh_segmenter,Polygon_mesh_segmentation_wrapper<Polyhedron_3_SWIG_wrapper>)
+
+%include "SWIG_CGAL/Polygon_mesh_processing/Mesh_signature.h"
+
 
 %include "std_vector.i"
 %template(Polyhedron_list) std::vector<Polyhedron_3_SWIG_wrapper>;
 %template(PolySignature) MeshSignature<Polyhedron_3_SWIG_wrapper>;
 %template(BoundingBox) MeshBoundingBox<Polyhedron_3_SWIG_wrapper>;
+
+%template(Seam) std::vector< Parameterization_polyhedron_adaptor::Vertex_handle>;
+
+%template(Halfedge_list) std::vector<Polyhedron_3_::Halfedge_handle>;
+%template(Cut_list) std::vector< std::vector<Polyhedron_3_::Halfedge_handle> >;
+
 
 %include "SWIG_CGAL/Polygon_mesh_processing/Side_of_triangle_mesh.h"
 %typemap(javaimports) Side_of_triangle_mesh_wrapper %{import CGAL.Kernel.Point_3; import CGAL.Kernel.Bounded_side; import CGAL.Polyhedron_3.Polyhedron_3;%}
