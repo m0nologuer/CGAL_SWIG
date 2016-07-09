@@ -1,3 +1,216 @@
+
+    std::vector<std::vector<std::vector<float> > > voxelize(int dimension){
+        // Construct AABB tree with a KdTree
+        Polyhedron_3_ polyhedron = poly.get_data();
+        Tree tree(faces(polyhedron).first, faces(polyhedron).second, polyhedron);
+        tree.accelerate_distance_queries();
+        // Initialize the point-in-polyhedron tester
+        Point_inside inside_tester(tree);
+
+        //Initialize 3D grif of booleans
+        std::vector<std::vector<std::vector<float> > > voxel_grid = std::vector<std::vector<std::vector<float> > >();
+        for (int i = 0; i < dimension; ++i){
+            voxel_grid.push_back(std::vector<std::vector<float> >());
+            for (int j = 0; j < dimension; ++j){
+                voxel_grid[i].push_back(std::vector<float>());
+                for (int k = 0; k < dimension; ++k)
+                    voxel_grid[i][j].push_back(0.0);
+            }
+        }      
+
+        MeshBoundingBox<Polyhedron_wrapper> box = MeshBoundingBox<Polyhedron_wrapper>(poly);
+
+        for (int i = 0; i < dimension; ++i)
+            for (int j = 0; j < dimension; ++j)
+                for (int k = 0; k < dimension; ++k)
+                {
+                    float x = (float)i/(float)dimension;
+                    float y = (float)j/(float)dimension;
+                    float z = (float)k/(float)dimension;
+
+                    Vector_3 offset = Vector_3(box.x_axis.x()*x + box.y_axis.x()*y + box.z_axis.x()*z,
+                        box.x_axis.y()*x + box.y_axis.y()*y + box.z_axis.y()*z,
+                        box.x_axis.z()*x + box.y_axis.z()*y + box.z_axis.z()*z);
+
+                    CGAL::Point_3<CGAL::Epick> point = CGAL::Point_3<CGAL::Epick>(box.min_point.x() + offset.x(),
+                        box.min_point.y() + offset.y(),box.min_point.z() + offset.z());
+
+                    // Determine the side and return true if inside!
+                    bool inside = (inside_tester(point) == CGAL::ON_BOUNDED_SIDE);
+                    voxel_grid[i][j][k] = inside ? 1.0 : 0.0;
+                }
+        
+        return voxel_grid;
+    };
+
+
+    void auto_parameterize(){
+
+        get_cuts();
+
+        Parameterization_polyhedron_adaptor mesh_adaptor(mesh);
+
+        Mesh_patch_polyhedron   mesh_patch(mesh_adaptor, seam.begin(), seam.end());
+
+        typedef CGAL::Parameterizer_traits_3<Mesh_patch_polyhedron>
+                                                Parameterizer; // Type that defines the error codes
+
+        Parameterizer::Error_code err = CGAL::parameterize(mesh_patch);
+
+        switch(err) {
+        case Parameterizer::OK: // Success
+            break;
+        default: // Error
+            std::cerr << "Error: " << Parameterizer::get_error_message(err) << std::endl;
+        };
+
+        Polyhedron_3_::Vertex_const_iterator pVertex;
+        for (pVertex = mesh.vertices_begin();
+            pVertex != mesh.vertices_end();
+            pVertex++)
+        {
+            // (u,v) pair is stored in any halfedge
+            double u = mesh_adaptor.info(pVertex->halfedge())->uv().x();
+            double v = mesh_adaptor.info(pVertex->halfedge())->uv().y();
+            std::cout << "(u,v) = (" << u << "," << v << ")" << std::endl;
+        }
+
+    }
+  
+
+      //Calculate distance of simplified mesh from list of ideal points.
+    float E_dist(Polyhedron_3_ mesh, std::vector<Point_3> mesh_points){
+        // Construct AABB tree with a KdTree
+        Tree tree(faces(mesh).first, faces(mesh).second, mesh);
+        tree.accelerate_distance_queries();
+
+        float energy = 0;
+        for (int i = 0; i < mesh_points.size(); ++i){
+            CGAL::Point_3<CGAL::Epick> point_query(mesh_points[i].x(),
+                mesh_points[i].y(), mesh_points[i].z());
+
+            energy += sqrt(std::abs(tree.squared_distance(point_query)));
+        }
+
+        return energy;
+    }
+
+    //Calculate the spring energy in the mesh
+    float E_spring(Polyhedron_3_ mesh){
+
+        float energy = 0;
+        for (Polyhedron_3_::Halfedge_iterator he = mesh.halfedges_begin (); he != mesh.halfedges_end(); he++){          
+            energy += (he->vertex()->point()- he->opposite()->vertex()->point()).squared_length();
+        }
+        return energy;
+    }
+
+    //Compute the penalty for excessive vertices
+    float E_rep(Polyhedron_3_ mesh, float c_rep){
+
+        return c_rep * mesh.size_of_vertices ();
+    }
+
+    float evaluate_op(Polyhedron_3_ mesh, Polyhedron_3_::Halfedge_handle he, 
+        std::vector<Point_3> v,float c_rep, int op_code){
+
+        Polyhedron_3_::Halfedge_handle he_new;
+
+        switch(op_code){
+            case 0:
+            //edge collapse
+                mesh.join_vertex(he);
+                break;
+            case 1:
+                //edge split
+                mesh.split_edge(he);
+                break;
+            case 2:
+                //edge swap
+                mesh.flip_edge(he);
+                break;
+            }
+
+            float new_energy = E_dist(mesh, v) + E_spring(mesh) + E_rep(mesh, c_rep);
+            return new_energy;
+    }
+
+    //Simplifies or splits a mesh to fit a set of points
+    void adaptive_mesh(std::vector<Point_3> mesh_points, float c_rep, int max_iter){
+
+        Polyhedron_3_ mesh = poly.get_data(); 
+
+        float min_energy = E_dist(mesh, mesh_points) + E_spring(mesh) + E_rep(mesh, c_rep);
+        int iters = 0;
+
+        std::vector<Polyhedron_3_::Halfedge_handle> halfedges;
+
+        int op_code = 0;
+
+        do{
+            //Pick halfedge at random
+            for (Polyhedron_3_::Halfedge_iterator he = mesh.halfedges_begin ();
+             he != mesh.halfedges_end(); he++)
+                halfedges.push_back(he);
+            Polyhedron_3_::Halfedge_handle he = halfedges[rand()%halfedges.size()];
+
+            printf("%f %f %f -> %f %f %f \n", he->vertex()->point().x(), he->vertex()->point().y(),
+                he->vertex()->point().z(), he->opposite()->vertex()->point().x(),
+                he->opposite()->vertex()->point().y(),he->opposite()->vertex()->point().z());
+
+            //Pick op at random
+            op_code = (++op_code)%3;
+
+            std::vector<Point_3> v;
+            v.push_back(Point_3(1000,1000,1000));
+             
+            float new_energy = min_energy-1;
+            printf("%f, %f \n", min_energy, new_energy);
+
+
+            if (new_energy < min_energy){
+                min_energy = new_energy;
+
+                printf("%d \n", op_code);
+
+                //Apply actual op
+                switch(op_code){
+                case 0:
+                //edge collapse
+                    mesh.join_vertex(he);
+                    break;
+                case 1:
+                    //edge split
+                    mesh.split_edge(he);
+                    break;
+                case 2:
+                    //edge swap
+                    mesh.flip_edge(he);
+                    break;
+                }
+
+            }
+
+        }while(++iters < max_iter);
+
+        poly = Polyhedron_wrapper(mesh);
+
+    }
+
+    void progressive_mesh(float c){
+
+        Polyhedron_3_ mesh = poly.get_data();
+
+        std::vector<Point_3> mesh_points = std::vector<Point_3>();
+        for (Polyhedron_3_::Vertex_iterator v = mesh.vertices_begin (); v != mesh.vertices_end(); v++){
+            Point_3* p = new Point_3(v->point());
+            mesh_points.push_back(*p);
+        }
+
+        adaptive_mesh(mesh_points, c, 1000);
+    }
+
+
     std::vector< std::vector<Polyhedron_3_::Halfedge_handle> > get_cuts(){
 
         Polyhedron_3_ mesh = poly.get_data();

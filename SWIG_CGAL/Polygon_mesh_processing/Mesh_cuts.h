@@ -10,6 +10,9 @@
 #include <CGAL/parameterize.h>
 #include <CGAL/Parameterization_mesh_patch_3.h>
 
+#include <CGAL/Polygon_2_algorithms.h>
+
+
 
 typedef CGAL::Parameterization_polyhedron_adaptor_3<Polyhedron_3_> Parameterization_polyhedron_adaptor;
 typedef CGAL::Parameterization_mesh_patch_3<Parameterization_polyhedron_adaptor> Mesh_patch_polyhedron;
@@ -24,64 +27,6 @@ bool sorter(Polyhedron_3_::Halfedge_handle const & a, Polyhedron_3_::Halfedge_ha
                 return dist_a.squared_length() < dist_b.squared_length();
             }
 
-std::vector <Polyhedron_3_::Halfedge_handle>  path_between_two_vertices(Polyhedron_3_::Halfedge_handle start, Polyhedron_3_::Halfedge_handle end){
-
-    //can't have halfedges used twice
-    boost::unordered_map<Polyhedron_3_::Halfedge_handle,bool> marked_edges;
-    std::vector <Polyhedron_3_::Halfedge_handle> path;
-
-    Polyhedron_3_::Vertex_handle current_vertex = start->opposite()->vertex();
-
-    while(current_vertex != end->vertex()){
-
-        float min_distance;
-        bool found = false;
-
-        Point_3 p = current_vertex->point();
-
-        printf("%f %f %f\n", p.x(), p.y(), p.z());
-
-        //go around the vertex, decide which direction to go in
-        Polyhedron_3_::Halfedge_around_vertex_circulator he_it = current_vertex->vertex_begin();
-        Polyhedron_3_::Halfedge_around_vertex_circulator best_halfedge = he_it;
-        do{
-            //we only consider if this edge or it's opposite isn't already used
-            if(marked_edges.find(he_it) == marked_edges.end()
-                && marked_edges.find(he_it->opposite()) == marked_edges.end()){
-
-                 Point_3 q = he_it->opposite()->vertex()->point();
-                printf("check %f %f %f -> %f %f %f \n", p.x(), p.y(), p.z(), q.x(), q.y(), q.z());
-
-                //greedy algorithm - pick the closest to the other point
-                float distance = (he_it->opposite()->vertex()->point() - end->vertex()->point()).squared_length();
-                if (!found || (distance < min_distance)){
-                    printf("maxed \n");
-                    min_distance = distance;
-                    best_halfedge = he_it;
-                    found = true;
-                };
-            }
-
-        }while(++he_it != current_vertex->vertex_begin());
-
-        if (!found){
-            //backtrack
-            printf("not found\n");
-            path.pop_back();
-            current_vertex = path.back()->vertex();
-        }
-        else{
-            printf("found\n");
-            //add edge to list
-            path.push_back(best_halfedge);
-            //set current vertex
-            current_vertex = best_halfedge->opposite()->vertex();
-        }
-    }
-
-    return path;
-}
-
 
 template <class Polyhedron_wrapper>
 class Polygon_mesh_cuts_wrapper
@@ -94,13 +39,19 @@ class Polygon_mesh_cuts_wrapper
 public:
     #ifndef SWIG
     Polyhedron_wrapper& poly;
+    Polyhedron_3_ mesh;
+    std::vector<Polyhedron_3_::Vertex_handle> seam;
+    std::vector< std::vector<Polyhedron_3_::Halfedge_handle> > sub_paths;
+    Parameterization parameterization;
     #endif
 
-    Polygon_mesh_cuts_wrapper(Polyhedron_wrapper& p): poly(p) {}
+    Polygon_mesh_cuts_wrapper(Polyhedron_wrapper& p): poly(p) { 
+        mesh = p.get_data();
+        parameterization = Parameterization();
+    }
     
     std::vector< std::vector<Point_3> > get_border_loops(){
         
-        Polyhedron_3_ mesh = poly.get_data();
         std::vector< std::vector<Point_3> > border_loops = std::vector< std::vector<Point_3> >();
         std::vector<Polyhedron_3_::Halfedge_handle> used_halfedges = std::vector<Polyhedron_3_::Halfedge_handle>();
         
@@ -124,9 +75,70 @@ public:
         
     };
 
-    std::vector<Polyhedron_3_::Vertex_handle>  get_cuts(){
+    void add_path_between_two_vertices(Polyhedron_3_::Halfedge_handle start, Polyhedron_3_::Halfedge_handle end){
 
-        Polyhedron_3_ mesh = poly.get_data();
+        //can't have halfedges used twice
+        boost::unordered_map<Polyhedron_3_::Halfedge_handle,bool> marked_edges;
+        std::vector <Polyhedron_3_::Halfedge_handle>* path = new std::vector <Polyhedron_3_::Halfedge_handle>();
+
+        Polyhedron_3_::Vertex_handle current_vertex = start->opposite()->vertex();
+
+        while(current_vertex != end->vertex()){
+
+            float min_distance;
+            bool found = false;
+
+            Point_3 p = current_vertex->point();
+
+            printf("%f %f %f\n", p.x(), p.y(), p.z());
+
+            //go around the vertex, decide which direction to go in
+            Polyhedron_3_::Halfedge_around_vertex_circulator he_it = current_vertex->vertex_begin();
+            Polyhedron_3_::Halfedge_around_vertex_circulator best_halfedge = he_it;
+            do{
+                //we only consider if this edge or it's opposite isn't already used
+                if(marked_edges.find(he_it) == marked_edges.end()
+                    && marked_edges.find(he_it->opposite()) == marked_edges.end()){
+
+                     Point_3 q = he_it->opposite()->vertex()->point();
+                    printf("check %f %f %f -> %f %f %f \n", p.x(), p.y(), p.z(), q.x(), q.y(), q.z());
+
+                    //greedy algorithm - pick the closest to the other point
+                    float distance = (he_it->opposite()->vertex()->point() - end->vertex()->point()).squared_length();
+                    if (!found || (distance < min_distance)){
+                        printf("maxed \n");
+                        min_distance = distance;
+                        best_halfedge = he_it;
+                        found = true;
+                    };
+                }
+
+            }while(++he_it != current_vertex->vertex_begin());
+
+            if (!found){
+                //backtrack
+                printf("not found\n");
+                path->pop_back();
+                current_vertex = path->back()->vertex();
+            }
+            else{
+                printf("found\n");
+                //add edge to list
+                path->push_back(best_halfedge);
+                printf("?\n");
+
+                //set current vertex
+                current_vertex = best_halfedge->opposite()->vertex();
+                printf("found\n");
+            }
+        }
+
+        sub_paths.push_back(*path);
+    }
+
+
+    void get_cuts(){
+
         boost::unordered_map<Polyhedron_3_::Facet_handle, bool> marked_faces;
         boost::unordered_map<Polyhedron_3_::Vertex_handle, bool> marked_vertices;
         boost::unordered_map<Polyhedron_3_::Halfedge_handle,bool> marked_edges;
@@ -268,10 +280,10 @@ public:
             };
         };
 
+
         printf("pulling cuts\n");
 
         //Pull out the cuts
-        std::vector< std::vector<Polyhedron_3_::Halfedge_handle> > cuts = std::vector< std::vector<Polyhedron_3_::Halfedge_handle> >();
         for(Polyhedron_3_::Vertex_iterator v_it = mesh.vertices_begin();
               v_it != mesh.vertices_end(); ++v_it) { //Attempt to start loop at each vertex
  
@@ -283,7 +295,7 @@ public:
             //if this vertex is not marked
             if(marked_vertices.find(v_it) == marked_vertices.end()){
                 //start a new loop
-                std::vector<Polyhedron_3_::Halfedge_handle> cut = std::vector<Polyhedron_3_::Halfedge_handle>();
+                std::vector<Polyhedron_3_::Halfedge_handle>* cut = new std::vector<Polyhedron_3_::Halfedge_handle>();
                 bool finished_loop = false;
                 Polyhedron_3_::Vertex_handle loop_vertex = v_it;
                 marked_vertices.insert(std::make_pair(loop_vertex,true)); //mark vertex
@@ -322,7 +334,7 @@ public:
                                 //mark the vertex
                                 marked_vertices.insert(std::make_pair(loop_vertex,true)); 
                                 //record the edge
-                                cut.push_back(he_it);
+                                cut->push_back(he_it);
 
                                 finished_loop = false; //keep going
                                 break; //avoid dupes
@@ -338,54 +350,54 @@ public:
                 }
                 printf("add cut\n");
 
-                for (int i = 0; i < cut.size(); ++i)
+                for (int i = 0; i < cut->size(); ++i)
                 {
-                    Point_3 p = cut[i]->vertex()->point();
-                    Point_3 q = cut[i]->opposite()->vertex()->point();
+                    Point_3 p = (*cut)[i]->vertex()->point();
+                    Point_3 q = (*cut)[i]->opposite()->vertex()->point();
                     printf("hi\n");
                     printf("%f %f %f -> %f %f %f \n", p.x(), p.y(), p.z(), q.x(), q.y(), q.z());
                 }
 
-                cuts.push_back(cut);
+                sub_paths.push_back((*cut));
             }
         }
 
         //straighten cuts
-       // for (int i = 0; i < cuts.size(); i++){
+       //for (int i = 0; i < cuts.size(); i++){
          //   cuts[i] = straighten_path(cuts[i], 10);
         //}
 
+        
         //create a cut that passes through every other cut
-        int cuts_count = cuts.size()-1;
+        int cuts_count = sub_paths.size()-1;
         for (int i = 0; i < cuts_count; i++){
-            Polyhedron_3_::Halfedge_handle start = cuts[i].back();
-            Polyhedron_3_::Halfedge_handle end = cuts[i+1].front();
+            Polyhedron_3_::Halfedge_handle start = sub_paths[i].back();
+            Polyhedron_3_::Halfedge_handle end = sub_paths[i+1].front();
 
-            cuts.push_back(path_between_two_vertices(start,end));
+            add_path_between_two_vertices(start,end);
         }
 
         //concatenate cuts into one seam
-        std::vector<Parameterization_polyhedron_adaptor::Vertex_handle> seam = std::vector<Parameterization_polyhedron_adaptor::Vertex_handle> ();
         boost::unordered_map< std::pair<Polyhedron_3_::Vertex_handle, std::pair<int, int> >, bool> used_vertices = boost::unordered_map< std::pair<Polyhedron_3_::Vertex_handle, std::pair<int, int> >, bool>();
        
         int cut_id = 0;
         int vertex_id = 0;
  
         //while we haven't ended the seam
-        while (vertex_id < cuts[cut_id].size() ){
+        while (vertex_id < sub_paths[cut_id].size() ){
 
             printf("%d %d", cut_id, vertex_id);
 
             //log current vertex
-            Polyhedron_3_::Vertex_handle vertex = cuts[cut_id][vertex_id]->vertex();
-            seam.push_back((Parameterization_polyhedron_adaptor::Vertex_handle)vertex);
+            Polyhedron_3_::Vertex_handle vertex = sub_paths[cut_id][vertex_id]->vertex();
+            seam.push_back(vertex);
             used_vertices.insert(std::make_pair(std::make_pair(vertex, 
                 std::make_pair(cut_id, vertex_id)), true));
 
             //search all nodes for dupilicate use of this vertex
-            for (int i = 0; i < cuts.size(); ++i)
-                for (int j = 0; j < cuts[i].size(); ++j)     
-                    if (cuts[i][j]->vertex() == vertex){  //if we find a repeated vertex
+            for (int i = 0; i < sub_paths.size(); ++i)
+                for (int j = 0; j < sub_paths[i].size(); ++j)     
+                    if (sub_paths[i][j]->vertex() == vertex){  //if we find a repeated vertex
                         if (used_vertices.find(std::make_pair(vertex,std::make_pair(i,j))) == used_vertices.end()){
                             //that hasn't been used before
                             cut_id = i;
@@ -401,8 +413,13 @@ public:
             //If empty, add in the first vertex
             Polyhedron_3_::Halfedge_handle he = mesh.halfedges_begin();
             seam.push_back(he->vertex());
+            seam.push_back(he->opposite()->vertex());
+
+            std::vector<Polyhedron_3_::Halfedge_handle>* cut = new std::vector<Polyhedron_3_::Halfedge_handle>();
+            cut->push_back(he);
+            sub_paths.push_back((*cut));
         }
-        return seam;
+
     };
 
     float path_length(std::vector<Polyhedron_3_::Vertex_handle> path){
@@ -420,6 +437,8 @@ public:
 
         for (int i = 0; i < path.size(); ++i)
         {
+                printf("%d..",i);
+
             distance += sqrt((path[i]->vertex()->point()-path[i]->opposite()->vertex()->point()).squared_length());
         }
         return distance;
@@ -537,58 +556,61 @@ public:
 
     Parameterization fit_border(int resolution){
 
-       Parameterization parameterization;
-       std::vector<Polyhedron_3_::Vertex_handle> seam = get_cuts();
+       printf("cuts done \n");
 
-      //identify cut nodes
-        std::vector<Polyhedron_3_::Vertex_handle> cut_nodes = std::vector<Polyhedron_3_::Vertex_handle>();
-        std::vector<std::vector<Polyhedron_3_::Vertex_handle> > sub_paths = std::vector< std::vector<Polyhedron_3_::Vertex_handle> >();
         //allocate distances
-        std::vector<float> distance_allocations;
+        std::vector<float> distance_allocations  = std::vector<float>();
         float total_cut_distance = 0;
 
-        int prev_node = 0;
         for (int i = 0; i < seam.size(); i++){
-            if (seam[i]->vertex_degree () == 2){
-                cut_nodes.push_back(seam[i]);
+            printf("%f..",seam[i]->point().x());
 
-                //create a sub path at the cut node
-                std::vector<Polyhedron_3_::Vertex_handle> sub_path;
-                for (int j = prev_node; j < i; ++j)
-                    sub_path.push_back(seam[j]);
-                prev_node = i;
-                sub_paths.push_back(sub_path);
-
-                //calculate distance
-                float dist = path_length(sub_path);
-                total_cut_distance += dist;
-                distance_allocations.push_back(dist);
-            }
         }
-/*
+
+        for (int i = 0; i < sub_paths.size(); i++){
+            float dist = path_length(sub_paths[i]);
+            total_cut_distance += dist;                
+            distance_allocations.push_back(dist);
+        }
+
+       printf("rounding distance \n");
+
         //round distances
         std::vector<int> pixel_allocations;
         int points_left =  4*(resolution-1);
-        for (int i = 0; i < sub_paths.size()-1; ++i){
+       printf("%d \n", distance_allocations.size());
+
+        for (int i = 0; i < distance_allocations.size()-1; ++i){
             int allocation = distance_allocations[i]*4*(resolution-1)/total_cut_distance;
             pixel_allocations.push_back(allocation);
             points_left -= allocation;
         }
         pixel_allocations.push_back(points_left);
 
+       printf("fit around border \n");
 
         //fit around border
         float x = 0; float y = 0;
         float x_dir = 1; float y_dir = 0; 
         for (int i = 0; i < sub_paths.size(); ++i)
         {
-            //place parameterization down every path
-            for (int j = 0; j < sub_paths[i].size() -1; ++j)
-            {
-                std::pair<float, float> coord = std::make_pair(x, y);
-                parameterization.insert(std::make_pair(sub_paths[i][j],coord));
+            printf("fit path %d \n", sub_paths[i].size());
 
-                float distance_change = path_length(sub_paths[i])/(pixel_allocations[i]/resolution);
+            if (sub_paths[i].size() == 0)
+                break;
+
+            //place parameterization down every path
+            for (int j = 0; j < sub_paths[i].size(); ++j)
+            {
+                printf("INSERT \n");
+                printf("%f \n", sub_paths[i][j]->vertex()->point().x());
+
+                std::pair<float, float> coord = std::make_pair(x, y);
+                parameterization.insert(std::make_pair(sub_paths[i][j]->vertex(),coord));
+                printf("legnth \n");
+
+                std::vector<Polyhedron_3_::Halfedge_handle> vec; vec.push_back(sub_paths[i][j]);
+                float distance_change = path_length(vec)*4.0/total_cut_distance;///(pixel_allocations[i]/resolution);
                 x += x_dir * distance_change;
                 y += y_dir * distance_change;
 
@@ -601,51 +623,56 @@ public:
 
             std::pair<float, float> coord = std::make_pair(x, y);
             int j = sub_paths[i].size() -1;
-            parameterization.insert(std::make_pair(sub_paths[i][j],coord));
+            parameterization.insert(std::make_pair(sub_paths[i][j]->opposite()->vertex(),coord));
         }
 
         //split degenerate triangles
         //split corner edges
         //rotate
 
+       printf("initial parameterization \n");
+
         //come up with a basic parameterization for the rest of the mesh
         std::queue<Polyhedron_3_::Vertex_handle> vertex_list;
+        for (int i = 0; i < seam.size(); ++i)
+            vertex_list.push(seam[i]);
+
         while (vertex_list.size() > 0){
             Polyhedron_3_::Vertex_handle current_vertex = vertex_list.front();
             vertex_list.pop();
 
-            //if this vertex is not yet marked
-            if(parameterization.find(current_vertex) == parameterization.end()){
+            //Traverse neighbouring vertices
+            Polyhedron_3_::Halfedge_around_vertex_circulator he_it = current_vertex->vertex_begin();
+            float total_distance = 0;
+            float weighted_x = 0;
+            float weighted_y = 0;
+             do{
+                //if this vertex is already parametrized
                 //coords are the average of neighbors, weighted by distance
-
-                Polyhedron_3_::Halfedge_around_vertex_circulator he_it = current_vertex->vertex_begin();
-                float total_distance = 0;
-                float weighted_x = 0;
-                float weighted_y = 0;
-                do{
-                    //if this vertex is already parametrized
-                    if(parameterization.find(he_it->opposite()->vertex()) != parameterization.end()){
+                if(parameterization.find(he_it->opposite()->vertex()) != parameterization.end()){
                         float distance = sqrt((he_it->opposite()->vertex()->point()- current_vertex->point()).squared_length());
                         std::pair<float,float> coords = (parameterization.find(he_it->opposite()->vertex()))->second;
                        
-                        weighted_x += distance* std::get<0>(coords);
-                        weighted_y += distance* std::get<1>(coords);
-                        total_distance += distance;
-                    }   
-                    else{
-                        vertex_list.push(he_it->opposite()->vertex());
-                    }
-                }while(++he_it != current_vertex->vertex_begin());
+                    weighted_x += distance* std::get<0>(coords);
+                    weighted_y += distance* std::get<1>(coords);
+                    total_distance += distance;
+                }   
+                else{
+                    vertex_list.push(he_it->opposite()->vertex());
+                }
+            }while(++he_it != current_vertex->vertex_begin());
 
+            //if this (original) vertex is not yet marked
+            if(parameterization.find(current_vertex) == parameterization.end()){
                 std::pair<float,float> coords = std::make_pair(weighted_x/total_distance, weighted_y/total_distance);
                 parameterization.insert(std::make_pair(current_vertex, coords));
             }
         }
-*/
-        return parameterization;
+        
+        return parameterization; 
     }
 
-    float facet_area(Polyhedron_3_::Facet_iterator facet)
+    float facet_area(Polyhedron_3_::Facet_iterator facet){
         
         //Circulate around facet
         Polyhedron_3_::Halfedge_around_facet_circulator halfedge_it = facet->facet_begin(); 
@@ -676,23 +703,75 @@ public:
 
         return facet_area;
     }
+
+    void invert_coords(Polyhedron_3_::Vertex_handle v1, Polyhedron_3_::Vertex_handle v2,
+        Polyhedron_3_::Vertex_handle v3, float& dir_1_edge_1,
+        float& dir_1_edge_2, float& dir_2_edge_1, float& dir_2_edge_2){
+           
+            std::pair<float,float> coords1 = parameterization.find(v1)->second;
+            std::pair<float,float> coords2 = parameterization.find(v2)->second;
+            std::pair<float,float> coords3 = parameterization.find(v3)->second;
+
+            //Solve for the linear combination of two edges, needed to parametrize either way
+            float a_x = std::get<0>(coords2) - std::get<0>(coords1);
+            float a_y = std::get<1>(coords2) - std::get<1>(coords1);
+            float b_x = std::get<0>(coords3) - std::get<0>(coords1);
+            float b_y = std::get<1>(coords3) - std::get<1>(coords1);
+
+            //Simple 2x2 matrix inversion
+            float det = a_x*b_y - a_y*b_x;
+            dir_1_edge_1 = b_y/det;
+            dir_1_edge_2 = -a_y/det;
+            dir_2_edge_1 = -b_x/det;
+            dir_2_edge_2 = a_y/det;
+    }
+
     float geometric_stretch(Parameterization parameterization){
         
+       printf("geometric_stretch \n");
+
         float stretch = 0;
 
-        for(Polyhedron_3_::Facet_iterator f_it = mesh.faces_begin();
-              f_it != mesh.faces_end(); ++f_it) {
+        for(Polyhedron_3_::Facet_iterator f_it = mesh.facets_begin();
+              f_it != mesh.facets_end(); ++f_it) {
                 
+            printf("Jacobian \n");
+
             //Compute Jacobian for each face
             Polyhedron_3_::Halfedge_around_facet_circulator he = f_it->facet_begin ();
-            //Solve for the linear combination of two edges, needed to parametrize either way
-        
+
+            printf("vertices \n");
+            printf("%f \n", he->vertex()->point().x());
+
+            //Invert coords
+            Polyhedron_3_::Vertex_handle v1 = he->vertex();
+            Polyhedron_3_::Vertex_handle v2 = (++he)->vertex();
+            Polyhedron_3_::Vertex_handle v3 = (++he)->vertex();
+
+            float dir_1_edge_1;
+            float dir_1_edge_2;
+            float dir_2_edge_1;
+            float dir_2_edge_2;
+
+
+            invert_coords(v1, v2, v3,
+                dir_1_edge_1, dir_1_edge_2, dir_2_edge_1, dir_2_edge_2);
+            
+            printf("Vecots \n");
+
+            //rows of Jacobian
+            Vector_3 df_dx = dir_1_edge_1 * (v2->point() - v1->point()) + dir_1_edge_2 * (v3->point() - v1->point());
+            Vector_3 df_dy = dir_2_edge_1 * (v2->point() - v1->point()) + dir_2_edge_2 * (v3->point() - v1->point());
+
+            float facet_stretch = df_dx.squared_length() + df_dy.squared_length();
+
+            printf("Area \n");
 
             //Compute face area
-
-            //
+            stretch += facet_stretch * facet_area(f_it);
 
         }
+        return stretch;
     }
 
     void optimize_vertex(Polyhedron_3_::Vertex_handle vertex, Parameterization& parameterization){
@@ -701,20 +780,27 @@ public:
         float new_error = 0;
 
         std::pair<float,float> coords = parameterization.find(vertex)->second;
-        float x = std::get<0>(coords);
-        float y = std::get<1>(coords);
+        float x = coords.first;
+        float y = coords.second;
+       
+        printf("optimize_vertex \n");
         
         do {
+
+            printf("iteration \n");
+
             //random search direction
             float vector_dir_x = rand();
             float vector_dir_y = rand();
             
-            //make sure it is in the "cone"
+            //make sure it is in the "cone"?
 
             //binary line search
             float pertubation_length = 1;
             for (int i = 0; i < 20; ++i)
             {
+                printf("%d...",i);
+
                 pertubation_length *= 0.5;
                 float new_x = x+vector_dir_x*pertubation_length;
                 float new_y = y+vector_dir_y*pertubation_length;
@@ -723,7 +809,7 @@ public:
                 parameterization.insert(std::make_pair(vertex, std::make_pair(x,y)));
 
                 //compute the error, update coords if improvement
-                new_error = signal_stretch_metric(parameterization);
+                new_error = geometric_stretch(parameterization);
                 if (new_error < best_error){
                     x = new_x;
                     y = new_y;
@@ -735,13 +821,15 @@ public:
 
     }
 
-    Parameterization parameterize(std::vector<Parameterization_polyhedron_adaptor::Vertex_handle> seam, int resolution, int iterations){
+    Parameterization parameterize(int resolution, int iterations){
 
-        Polyhedron_3_ mesh = poly.get_data();
-        Parameterization parameterization = fit_border(resolution);
+        fit_border(resolution);
+        printf("start \n");
 
         for (int i = 0; i < iterations; ++i)
         {
+            printf("%d..", i);
+
             //Optimize each vertex in a line
             for(Polyhedron_3_::Vertex_iterator v_it = mesh.vertices_begin();
               v_it != mesh.vertices_end(); ++v_it) {
@@ -750,6 +838,56 @@ public:
         }
 
         return parameterization;
+    }
+
+    Point_3 sample_geometry(float x, float y){
+
+        CGAL::Epick::Point_2 sample_point(x,y);
+
+        //Find facet that contains these coordinates
+        for(Polyhedron_3_::Facet_iterator f_it = mesh.facets_begin();
+              f_it != mesh.facets_end(); ++f_it) {
+
+            //Build list of coordinates
+            std::vector<CGAL::Epick::Point_2> coord_points;
+            Polyhedron_3_::Halfedge_around_facet_circulator halfedge_it = f_it->facet_begin(); 
+            do{
+
+                std::pair<float,float> coords = parameterization.find(halfedge_it->vertex())->second;
+                CGAL::Epick::Point_2 point(std::get<0>(coords), std::get<1>(coords));
+                coord_points.push_back(point);
+            }while(++halfedge_it != f_it->facet_begin());
+
+            //If this facet contains the point
+            if (CGAL::bounded_side_2(coord_points.begin(), coord_points.end(), 
+                sample_point, CGAL::Epick())==CGAL::ON_BOUNDED_SIDE ){
+            
+                //Consider 3 vertices only    
+                Polyhedron_3_::Vertex_handle v1 = halfedge_it->vertex();
+                Polyhedron_3_::Vertex_handle v2 = (++halfedge_it)->vertex();
+                Polyhedron_3_::Vertex_handle v3 = (++halfedge_it)->vertex();
+
+                // Interpolate, start by inverting coord system
+                std::pair<float,float> coords = parameterization.find(v1)->second;
+                float x_dir = x - std::get<0>(coords);
+                float y_dir = y - std::get<1>(coords);
+
+                float dir_1_edge_1; float dir_1_edge_2;
+                float dir_2_edge_1; float dir_2_edge_2;
+                invert_coords(v1, v2, v3,
+                    dir_1_edge_1, dir_1_edge_2, dir_2_edge_1, dir_2_edge_2);
+
+                float x_edge = x_dir*dir_1_edge_1 + y_dir*dir_2_edge_1;
+                float y_edge = x_dir*dir_2_edge_1 + y_dir*dir_2_edge_2;
+
+                Point_3 geometry = v1->point() + (v2->point()-v1->point())*x_edge
+                         + (v3->point()-v1->point())*y_edge;
+                return geometry;
+            }
+        }
+
+        //If facet not found
+        return Point_3(0,0,0);
     }
 };
 #endif //SWIG_CGAL_MESH_CUTS_3_H
